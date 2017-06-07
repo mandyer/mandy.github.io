@@ -148,7 +148,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/06/兼容客户端踩坑记录/">hexo + github 搭建个人博客</a>
+      <a class="article-title" href="/2017/06/06/兼容客户端踩坑记录/">h5 兼容客户端踩坑记录</a>
     </h1>
   
 
@@ -161,7 +161,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>一、场景描述：网页传功能 每1s发送一个请求，（长轮询）获取客户端发送信息，可下载客户端发送的消息<br>1.settimeout 在ios 中离开当前页面就会停止轮询<br>2.下载 在ios 中是直接打开<br>解决方案：并没有太好的解决方案，打开新tab 不会影响轮询页面  </p>
+<p>二、iOS 滑动 迟缓<br>-webkit-overflow-scrolling:touch  </p>
+
       
 
       
