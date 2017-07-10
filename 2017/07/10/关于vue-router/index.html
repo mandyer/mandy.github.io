@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | mandyer&#39;s records</title>
+  <title>关于vue-router | mandyer&#39;s records</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="mandyer&#39;s records">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="背景说明：使用 Vue 提供的Vue-cli 脚手架，构建项目。如果我们使用的是jquery框架，那么一个页面就会应一个html文件，跳页面是通过访问对应页面的链接实现的。而vue.js是单页应用 这个时候就要用到vue-router了。 当使用 Vue.js时 ，我们已经可以通过组合组件来组成应用程序，当你要把 vue-router 添加进来，我们需要做的是，将组件(components)映射到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于vue-router">
+<meta property="og:url" content="http://yoursite.com/2017/07/10/关于vue-router/index.html">
 <meta property="og:site_name" content="mandyer&#39;s records">
+<meta property="og:description" content="背景说明：使用 Vue 提供的Vue-cli 脚手架，构建项目。如果我们使用的是jquery框架，那么一个页面就会应一个html文件，跳页面是通过访问对应页面的链接实现的。而vue.js是单页应用 这个时候就要用到vue-router了。 当使用 Vue.js时 ，我们已经可以通过组合组件来组成应用程序，当你要把 vue-router 添加进来，我们需要做的是，将组件(components)映射到">
+<meta property="og:image" content="https://mandyer.github.io/img/img.png">
+<meta property="og:image" content="https://mandyer.github.io/img/img2.png">
+<meta property="og:updated_time" content="2017-07-10T10:20:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mandyer&#39;s records">
+<meta name="twitter:title" content="关于vue-router">
+<meta name="twitter:description" content="背景说明：使用 Vue 提供的Vue-cli 脚手架，构建项目。如果我们使用的是jquery框架，那么一个页面就会应一个html文件，跳页面是通过访问对应页面的链接实现的。而vue.js是单页应用 这个时候就要用到vue-router了。 当使用 Vue.js时 ，我们已经可以通过组合组件来组成应用程序，当你要把 vue-router 添加进来，我们需要做的是，将组件(components)映射到">
+<meta name="twitter:image" content="https://mandyer.github.io/img/img.png">
   
     <link rel="alternative" href="/atom.xml" title="mandyer&#39;s records" type="application/atom+xml">
   
@@ -145,103 +152,126 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-关于vue-router" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      关于vue-router
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/10/关于vue-router/" class="archive-article-date">
+
+        
+        <a href="/2017/07/10/关于vue-router/" class="archive-article-date">
   	<time datetime="2017-07-10T10:20:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/10/关于vue-router/">关于vue-router</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>背景说明：使用 Vue 提供的Vue-cli 脚手架，构建项目。如果我们使用的是jquery框架，那么一个页面就会应一个html文件，跳页面是通过访问对应页面的链接实现的。而vue.js是单页应用 这个时候就要用到vue-router了。</p>
+<p>当使用 Vue.js时 ，我们已经可以通过组合组件来组成应用程序，当你要把 vue-router 添加进来，我们需要做的是，将组件(components)映射到路由(routes)，然后告诉 vue-router 在哪里渲染它们。</p>
+<p>1.router的配置<br>在vue-cli 脚手架 中的使用vue-router 相关的配置<br>1.src文件夹下面的 router 文件夹下面 的 index.js文件 如下图所示，<br><img src="https://mandyer.github.io/img/img.png" alt="配置截图">;<br><img src="https://mandyer.github.io/img/img2.png" alt="配置截图">;</p>
+<h2 id="2-使用说明"><a href="#2-使用说明" class="headerlink" title="2.使用说明"></a>2.使用说明</h2><pre><code>// 路由匹配到的组件将渲染在这里:
+   &lt;router-view&gt;&lt;/router-view&gt;
 
-        <div class="article-info info-on-right">
-          
-          
+// &lt;router-link&gt; 默认会被渲染成一个 `&lt;a&gt;` 标签:
+   &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;
+</code></pre><hr>
 
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/10/关于vue-router/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/09/js数组部分/" class="archive-article-date">
-  	<time datetime="2017-06-09T08:49:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-09</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/09/js数组部分/">js基础知识 - 数组部分</a>
-    </h1>
+  
+    <a href="/2017/06/09/js数组部分/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js基础知识 - 数组部分</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/06/兼容客户端踩坑记录/" class="archive-article-date">
-  	<time datetime="2017-06-06T11:05:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/06/兼容客户端踩坑记录/">h5 兼容客户端踩坑记录</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -264,8 +294,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
