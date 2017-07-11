@@ -147,29 +147,37 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-兼容客户端踩坑记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-js数组部分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/11/兼容客户端踩坑记录/">h5 兼容客户端踩坑记录</a>
+      <a class="article-title" href="/2017/07/11/js数组部分/">js基础知识 - 数组部分</a>
     </h1>
   
 
         
-        <a href="/2017/07/11/兼容客户端踩坑记录/" class="archive-article-date">
-  	<time datetime="2017-07-11T02:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
+        <a href="/2017/07/11/js数组部分/" class="archive-article-date">
+  	<time datetime="2017-07-11T03:02:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、场景描述：网页传功能 每1s发送一个请求，（长轮询）获取客户端发送信息，可下载客户端发送的消息<br>1.settimeout 在ios 中离开当前页面就会停止轮询<br>2.下载 在ios 中是直接打开<br>解决方案：并没有太好的解决方案，打开新tab 不会影响轮询页面  </p>
-<p>二、iOS 滑动 迟缓<br>-webkit-overflow-scrolling:touch</p>
-<p>三、uc浏览器 在文字较多的时候，会默认放大字体。<br>解决方案：利用meta 标签<br>        var a=[1,2,3,4,5];<br>        a.slice(0,3)  //[1,2,3]<br>        a.slice(3)   //返回[4,5]<br>10.splice( )<br>在数组中插入或删除元素的通用方法。不同于slice( ),concat( ),splice( ) 会修改调用的数组 。<br>splice( )  能够从数组中删除元素、插入元素到数组中 或者同时完成两种操作<br>.第一个参数指定插入／删除的起始 位置<br>.第二个参数指定了从数组中删除元素的个数，如果省略第二个参数，起始点开始到数组结尾的所有元素都将被删除。<br>结果返回 被删除元素的数组<br>        var a=[1,2,3,4,5,6,7,8];<br>        a.splice(4); 返回 [5,6,7,8] 当前a [1,2,3,4]<br>        a.splice(1,2);返回[2,3]  当前a [1,4]<br>前两个参数指定了需要删除的数组元素，紧随其后的任意个数的参数指定了要插入到数组中的元素，从第一个参数指定的位置到开始插入<br>        var a=[1,2,3,4,5]<br>        a.splice(2,0,’a’,’b’);//  从第二个位置开始，删除0个 并插入’a’,’b’ 返回[ ]当前a为[1,2,’a’,’b’,3,4,5 ]<br>        a.splice(2,2,[1,2],3); //返回[’a’,’b’] a是[1,2,[1,2],3,3,4,5]<br><strong>区别于concat( ) ,splice( ) 会插入数组本身而非数组的元素</strong><br>11.toString( ) 和 toLocaleString( )<br>toString( ) 方法将每一个元素转化为字符数，并且输出用逗号分隔的字符串列表，注意输出不包括 方括号火灾其她人和形式的包裹数组值的分隔符号<br>       [1,2,3].toString() //‘1,2,3’<br>       *同 [1,2,3].join() 一样<br>toLocaleString( )是toString( )方法的本地化版本，它调用元素的toLocaleString( )方法将每个数组元素转化为字符串，并且实用本地化分隔符将这些字符串链接起来形成最终的字符串<br>12.数组类型<br>给定一个未知的对象，判定是否为数组 ES5中可以使用Array.isArray( )函数判定<br>        Array.isArray([]) //true<br>        Array.isArray({}) //false<br>typeof操作符，对数组它返回“对象”<br>instance 操作符 只能用于简单的情形：<br>  [ ] instanceof Array //=&gt;true<br>  ({ }) instanceof Array //=&gt;false<br>使用instanceof的问题是在web浏览器中有可能有多个窗口或窗体（frame），每个窗体都有自己的javascript环境，有自己的全局变量。并且，每个全局对象有自己的一组构造函数。因此一个窗体中的对象将不可能是另外窗体中的构造函数的实例。窗体之间的混淆不常发生，但是这个问题已证明 instanceof 操作符不能视为一个可靠的数组检查方法。</p>
+        <p>背景说明:最近重新看了遍 javascript 权威指南 数组部分，发现有一些原生的方法自己记得并不熟，这样不太好…</p>
+<p>定义：<br>    数组是值的有序集合，每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示称为索引。<br>数组是动态的，根据需要增长或缩减，数组可能是<strong>稀疏</strong>的，数组元素的索引不一定要连续，他们之间kennel有空缺<br>针对非稀疏数组，length属性就是数组元素的个数。<strong>针对稀疏数组 length属性 比元素个数要大</strong><br>    <strong>数组是对象的特殊形式</strong></p>
+<p>一、创建数组的方法<br>1.数组直接量 在方括号中将数组元素用逗号分隔开 eg: [1,2,3,4]  (注： 数组直接量可以有选择的以逗号结尾 [4,4,] 两个元素)<br>2.调用构造函数Array( )创建数组<br>        var a=new Array( ); // 创建一个没有数组参数<br>        var a=new Array(10);<br>        var a=new Array(10,e,w,d);</p>
+<p><em>平时用使用数组字面量比较多因为更简单呀</em></p>
+<p>二、数组元素的读和写<br>1.使用[ ]操作符来访问数组中的一个元素</p>
+<ol>
+<li><strong>数组是对象的特殊形式</strong>，使用方括号访问数组元素就像使用方括号访问对象的属性一样。js 将指定的数字索引值转换成字符串（索引值1 变成 “1” 然后将其作为属性名来使用）<br>3.<strong>数组的特别之处在于，数组会自动维护其length 属性值。</strong><br>4.所有索引都是属性名，但只有在0～2的32次方 -2 之间的整数属性名才是索引。<br>5.可以使用负数或非整数 来索引数组，这种情况下 数值转换为字符串，字符串作为属性名来用。<br>既然、不是非负整数，它就只能当常规的对象属性，而非数组的引用<br>6.任何不存在的属性 都是 undefined<br>7.既然数组是对象，那么它们可以从原型中继承元素</li>
+</ol>
+<p>三、稀疏数组<br>1.<strong>稀疏数组就是 包含从0 开始的不连续索引的数组</strong><br>2.足够稀疏的数组通常在实现上比稠密的数组更慢、内存利用率更高，在这样的数组中查找元素<br>的时间与常规对象属性的查找时间一样长<br>3.<strong>数组直接量中省略值时不会创建稀疏数组，省略的元素在数组中是存在的，其值为 undefine<br>这和数组元素根本不存在是有微妙的区别的，可以用in操作符检测两者之间的区别</strong><br>        eg:<br>        var a1=[ , , ,];                //数组是 [undefined,undefined,undefined]<br>        var a2=new Array(3);  //该数组根本没有元素<br>        0 in a1                         //true ：a1在索引0处有一个元素<br>        0 in a2                         // false : a2在索引0处没有元素</p>
+<p>四、数组长度<br>1.<strong>每个数组有一个 length属性，这个属性使其区别于常规的对象。</strong><br>2.非稀疏数组，length值代表数组中的元素个数。其值笔数组中最大的索引大1<br>3.当数组是稀疏时，length属性的值大于元素的个数<br>4.数组的两个特殊行为：<strong>1.如果为一个数组元素赋值，它的索引i大于或等于现有数组的长度时<br>length属性的值将设置为i+1</strong> 。2.设置length 属性值为大于其当前的长度。 实际上这不会向数组中国年天津<br>新的元素，它只是在数组尾部创建一个空的区域。<br>        a =[1,2,3,4,5];<br>        a.length=3;  //改变长度后 现在a=[1,2,3]<br>        a.length=0; //删除所有元素 a=[ ]<br>        a.length=5;// 长度为5，但是没有元素 就像 new Array(5)<br>        5.ES5中 Object.defineProperty( ) 让数组变成只读<br>         eg: a=[1,2,3]<br>            Object.defineProperty(a,”length”,{ writable:false } );<br>            a.length=0 //a 不会改变的<br>五、数组方法<br>1.为新索引赋值：<br>a=[ ] ; a[0]=“zero”; a[1]=“one”;<br>2.push( ) 和 pop( )<br>push( ) 方法在数组末尾添加一个或多个元素,并返回数组新的长度。<br>pop( )方法是删除数组中的最后一个元素，并返回删除的值<br>        var stack=[ ];<br>        stack.push(1,2); //返回数组长度2  stack =[1,2]<br>        stack.pop(); //返回删除元素 2     stack=[1]<br>        stack.push([4,5]); // 返回数组长度2  stack=[1,[4,5]]<br>        stack.pop() //返回被删除元素 [4,5] stack=[1]<br>3.unshift( ) 和 shift( )<br>unshift( ) 在数组的头部插入一个元素 或多个元素 。返回数组的长度<br>shift( ) 删除数组的第一个元素并返回删除元素。<br>        var a=[ ];<br>        a.unshift(1); //返回 1 当前a=[1]<br>        a.unshift(22) //返回 2 当前a=[22,1]<br>        a.shift() //返回 22 当前a=[1]<br>        a.unshift(3,[4,5]) //返回 3 当前a=[1,3,[4,5]]<br>        <em>unshift() 参数是一次性插入的<br>4.delete<br>var a=[1,2,3];<br>delete a[1] //a在索引1的位置不再有元素<br>a.length    // 3 delete 操作并不影响数组的长度<br><em>*删除数组元素 数组长度不变 ，变成稀疏数组</em></em></p>
+<p>5.join( )<br>  Array.join( ) 方法将数组中的所有元素都转化为字符串并拼接在一起，返回最后生成的<br>字符串。可以指定间隔符号，不指定默认为逗号<br>        var a=[1,2,3];<br>        a.join(); //返回 “1，2，3”<br>        a.join(“.”) //返回 “1.2.3”<br>6.reverse( )<br> Array.reverse( )方法将数组中的元素顺序颠倒 并返回逆向的数组。<br>7.sort( )<br>Array.sort( ) 方法将数组中的元素排序并返回排序后的数组<br>当不带参数调用sort( )时，数组元素以字母表顺序排序排序，如果有undefined 元素会被拍到最后（如有必要将临时转化为字符串比较）<br>        var a=[33,4,5,6]<br>        a.sort(); // 字母顺序排序：33 4 5 6<br>        a.sort(function(a,b){ //数值 顺序 4，33，222，1111<br>            return a-b;   //根据顺序 负  0  正<br>        });<br>        a.sort(function(a,b){ //数值大小相反的顺序<br>        return b-a;<br>         });<br>8.concat( )<br><strong>Array.concat( ) 方法创建并返回一个新数组</strong> ,它的元素包括调用concat( ) 的原始数组元素和concat( )的每一个参数，如果这些参数中的任何一个自身是数组，则链接的是数组元素，而非数组本身。但concat( )不会递归扁平化数组的数组<br>        var a=[1,2,3];<br>        a.concat(4,5) //返回 [1,2,3,4,5]<br>        a.concat([4,5]) //返回  [1,2,3,4,5]<br>        a.concat(4,[5,[6,7]]) ////返回  [1,2,3,4,5,[6,7]]  concat( )不会递归扁平化数组的数组<br>9.slice( )<br>返回指定数组的一个片段和子数组，它的两个参数分别指定了片段的开始和结束<br>的位置。包含开始位置元素 不包含结尾位置元素,如果只指定了一个参数，返回的数组将包含从开始位置到数组 结尾的所有元素。如果参数出现负数 则指倒数 如：-1 倒数第一个  ，-2倒数第二个。<br> var a=[1,2,3,4,5];<br>        a.slice(0,3)  //[1,2,3]<br>        a.slice(3)   //返回[4,5]<br>10.splice( )<br>在数组中插入或删除元素的通用方法。不同于slice( ),concat( ),splice( ) 会修改调用的数组 。<br>splice( )  能够从数组中删除元素、插入元素到数组中 或者同时完成两种操作<br>.第一个参数指定插入／删除的起始 位置<br>.第二个参数指定了从数组中删除元素的个数，如果省略第二个参数，起始点开始到数组结尾的所有元素都将被删除。<br>结果返回 被删除元素的数组<br>        var a=[1,2,3,4,5,6,7,8];<br>        a.splice(4); 返回 [5,6,7,8] 当前a [1,2,3,4]<br>        a.splice(1,2);返回[2,3]  当前a [1,4]<br>前两个参数指定了需要删除的数组元素，紧随其后的任意个数的参数指定了要插入到数组中的元素，从第一个参数指定的位置到开始插入<br>        var a=[1,2,3,4,5]<br>        a.splice(2,0,’a’,’b’);//  从第二个位置开始，删除0个 并插入’a’,’b’ 返回[ ]当前a为[1,2,’a’,’b’,3,4,5 ]<br>        a.splice(2,2,[1,2],3); //返回[’a’,’b’] a是[1,2,[1,2],3,3,4,5]<br><strong>区别于concat( ) ,splice( ) 会插入数组本身而非数组的元素</strong><br>11.toString( ) 和 toLocaleString( )<br>toString( ) 方法将每一个元素转化为字符数，并且输出用逗号分隔的字符串列表，注意输出不包括 方括号火灾其她人和形式的包裹数组值的分隔符号<br>       [1,2,3].toString() //‘1,2,3’<br>       *同 [1,2,3].join() 一样<br>toLocaleString( )是toString( )方法的本地化版本，它调用元素的toLocaleString( )方法将每个数组元素转化为字符串，并且实用本地化分隔符将这些字符串链接起来形成最终的字符串<br>12.数组类型<br>给定一个未知的对象，判定是否为数组 ES5中可以使用Array.isArray( )函数判定<br>        Array.isArray([]) //true<br>        Array.isArray({}) //false<br>typeof操作符，对数组它返回“对象”<br>instance 操作符 只能用于简单的情形：<br>  [ ] instanceof Array //=&gt;true<br>  ({ }) instanceof Array //=&gt;false<br>使用instanceof的问题是在web浏览器中有可能有多个窗口或窗体（frame），每个窗体都有自己的javascript环境，有自己的全局变量。并且，每个全局对象有自己的一组构造函数。因此一个窗体中的对象将不可能是另外窗体中的构造函数的实例。窗体之间的混淆不常发生，但是这个问题已证明 instanceof 操作符不能视为一个可靠的数组检查方法。</p>
 <p>13.indexOf( ) 和  lastIndexOf( )<br> indexOf( ) 和  lastIndexOf( ) 搜索整个数组中具有给定值的元素，返回找到的第一个元素索引 或者如果没有找到就返回 -1 。indexOf( ) 从头至尾搜索，而lastIndexOf( ) 则返向搜索。<br>一共两个参数，第一个是需要搜索的值，第二个可选参数，指定数组中的索引，从哪里开始搜索，没有的话 indexOf( ) 从第一个开始， lastIndexOf( ) 从最后一个开始<br>六、数组遍历、映射、过滤、检测、简化和搜索<br>ECMAScript5中的数组方法简述：<br>首先大多数方法的第一个参数接收的是一个函数，并对数组的每一个元素调用一次该函数。如果是稀疏数组，对不存在的元素不调用传递的函数。在大多数情况下，调用提供的函数使用三个参数，数组元素、数组的索引和数组本身。大多数数组方法的第一个参数是一个函数，第二个参数是可选的。如果有第二个参数，则调用函数被看做是第二个参数的方法，也就是说，在调用函数时传递的第二个参数作为它的this 关键字的值来使用 。ECMAScript5中的 数组方法都不会修改它们调用的原始数组，当然传递给这些方法的函数可以修改</p>
 <p>1.forEach( )<br>方法从头至尾遍历数组，为每个元素调用指定的函数</p>
 <p>//求数组的和<br>        var data=[1,2,3,4,5];<br>        var sum=0;<br>        data.forEach(function(value){sum + =value;})<br>//数组的每个元素加1<br>data.forEach(function(v,i,a){ a[i]=v+1; }); //data =[2,3,4,5,6]</p>
@@ -194,65 +202,7 @@ b=a.map(function(x){return x*x})
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/11/兼容客户端踩坑记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-js数组部分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/js数组部分/">js基础知识 - 数组部分</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/js数组部分/" class="archive-article-date">
-  	<time datetime="2017-07-10T10:58:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>背景说明:最近重新看了遍 javascript 权威指南 数组部分，发现有一些原生的方法自己记得并不熟，这样不太好…</p>
-<p>定义：<br>    数组是值的有序集合，每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示称为索引。<br>数组是动态的，根据需要增长或缩减，数组可能是<strong>稀疏</strong>的，数组元素的索引不一定要连续，他们之间kennel有空缺<br>针对非稀疏数组，length属性就是数组元素的个数。<strong>针对稀疏数组 length属性 比元素个数要大</strong><br>    <strong>数组是对象的特殊形式</strong></p>
-<p>一、创建数组的方法<br>1.数组直接量 在方括号中将数组元素用逗号分隔开 eg: [1,2,3,4]  (注： 数组直接量可以有选择的以逗号结尾 [4,4,] 两个元素)<br>2.调用构造函数Array( )创建数组<br>        var a=new Array( ); // 创建一个没有数组参数<br>        var a=new Array(10);<br>        var a=new Array(10,e,w,d);</p>
-<p><em>平时用使用数组字面量比较多因为更简单呀</em></p>
-<p>二、数组元素的读和写<br>1.使用[ ]操作符来访问数组中的一个元素</p>
-<ol>
-<li><strong>数组是对象的特殊形式</strong>，使用方括号访问数组元素就像使用方括号访问对象的属性一样。js 将指定的数字索引值转换成字符串（索引值1 变成 “1” 然后将其作为属性名来使用）<br>3.<strong>数组的特别之处在于，数组会自动维护其length 属性值。</strong><br>4.所有索引都是属性名，但只有在0～2的32次方 -2 之间的整数属性名才是索引。<br>5.可以使用负数或非整数 来索引数组，这种情况下 数值转换为字符串，字符串作为属性名来用。<br>既然、不是非负整数，它就只能当常规的对象属性，而非数组的引用<br>6.任何不存在的属性 都是 undefined<br>7.既然数组是对象，那么它们可以从原型中继承元素</li>
-</ol>
-<p>三、稀疏数组<br>1.<strong>稀疏数组就是 包含从0 开始的不连续索引的数组</strong><br>2.足够稀疏的数组通常在实现上比稠密的数组更慢、内存利用率更高，在这样的数组中查找元素<br>的时间与常规对象属性的查找时间一样长<br>3.<strong>数组直接量中省略值时不会创建稀疏数组，省略的元素在数组中是存在的，其值为 undefine<br>这和数组元素根本不存在是有微妙的区别的，可以用in操作符检测两者之间的区别</strong><br>        eg:<br>        var a1=[ , , ,];                //数组是 [undefined,undefined,undefined]<br>        var a2=new Array(3);  //该数组根本没有元素<br>        0 in a1                         //true ：a1在索引0处有一个元素<br>        0 in a2                         // false : a2在索引0处没有元素</p>
-<p>四、数组长度<br>1.<strong>每个数组有一个 length属性，这个属性使其区别于常规的对象。</strong><br>2.非稀疏数组，length值代表数组中的元素个数。其值笔数组中最大的索引大1<br>3.当数组是稀疏时，length属性的值大于元素的个数<br>4.数组的两个特殊行为：<strong>1.如果为一个数组元素赋值，它的索引i大于或等于现有数组的长度时<br>length属性的值将设置为i+1</strong> 。2.设置length 属性值为大于其当前的长度。 实际上这不会向数组中国年天津<br>新的元素，它只是在数组尾部创建一个空的区域。<br>        a =[1,2,3,4,5];<br>        a.length=3;  //改变长度后 现在a=[1,2,3]<br>        a.length=0; //删除所有元素 a=[ ]<br>        a.length=5;// 长度为5，但是没有元素 就像 new Array(5)<br>        5.ES5中 Object.defineProperty( ) 让数组变成只读<br>         eg: a=[1,2,3]<br>            Object.defineProperty(a,”length”,{ writable:false } );<br>            a.length=0 //a 不会改变的<br>五、数组方法<br>1.为新索引赋值：<br>a=[ ] ; a[0]=“zero”; a[1]=“one”;<br>2.push( ) 和 pop( )<br>push( ) 方法在数组末尾添加一个或多个元素,并返回数组新的长度。<br>pop( )方法是删除数组中的最后一个元素，并返回删除的值<br>        var stack=[ ];<br>        stack.push(1,2); //返回数组长度2  stack =[1,2]<br>        stack.pop(); //返回删除元素 2     stack=[1]<br>        stack.push([4,5]); // 返回数组长度2  stack=[1,[4,5]]<br>        stack.pop() //返回被删除元素 [4,5] stack=[1]<br>3.unshift( ) 和 shift( )<br>unshift( ) 在数组的头部插入一个元素 或多个元素 。返回数组的长度<br>shift( ) 删除数组的第一个元素并返回删除元素。<br>        var a=[ ];<br>        a.unshift(1); //返回 1 当前a=[1]<br>        a.unshift(22) //返回 2 当前a=[22,1]<br>        a.shift() //返回 22 当前a=[1]<br>        a.unshift(3,[4,5]) //返回 3 当前a=[1,3,[4,5]]<br>        <em>unshift() 参数是一次性插入的<br>4.delete<br>var a=[1,2,3];<br>delete a[1] //a在索引1的位置不再有元素<br>a.length    // 3 delete 操作并不影响数组的长度<br><em>*删除数组元素 数组长度不变 ，变成稀疏数组</em></em></p>
-<p>5.join( )<br>  Array.join( ) 方法将数组中的所有元素都转化为字符串并拼接在一起，返回最后生成的<br>字符串。可以指定间隔符号，不指定默认为逗号<br>        var a=[1,2,3];<br>        a.join(); //返回 “1，2，3”<br>        a.join(“.”) //返回 “1.2.3”<br>6.reverse( )<br> Array.reverse( )方法将数组中的元素顺序颠倒 并返回逆向的数组。<br>7.sort( )<br>Array.sort( ) 方法将数组中的元素排序并返回排序后的数组<br>当不带参数调用sort( )时，数组元素以字母表顺序排序排序，如果有undefined 元素会被拍到最后（如有必要将临时转化为字符串比较）<br>        var a=[33,4,5,6]<br>        a.sort(); // 字母顺序排序：33 4 5 6<br>        a.sort(function(a,b){ //数值 顺序 4，33，222，1111<br>            return a-b;   //根据顺序 负  0  正<br>        });<br>        a.sort(function(a,b){ //数值大小相反的顺序<br>        return b-a;<br>         });<br>8.concat( )<br><strong>Array.concat( ) 方法创建并返回一个新数组</strong> ,它的元素包括调用concat( ) 的原始数组元素和concat( )的每一个参数，如果这些参数中的任何一个自身是数组，则链接的是数组元素，而非数组本身。但concat( )不会递归扁平化数组的数组<br>        var a=[1,2,3];<br>        a.concat(4,5) //返回 [1,2,3,4,5]<br>        a.concat([4,5]) //返回  [1,2,3,4,5]<br>        a.concat(4,[5,[6,7]]) ////返回  [1,2,3,4,5,[6,7]]  concat( )不会递归扁平化数组的数组<br>9.slice( )<br>返回指定数组的一个片段和子数组，它的两个参数分别指定了片段的开始和结束<br>的位置。包含开始位置元素 不包含结尾位置元素,如果只指定了一个参数，返回的数组将包含从开始位置到数组 结尾的所有元素。如果参数出现负数 则指倒数 如：-1 倒数第一个  ，-2倒数第二个。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/js数组部分/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/11/js数组部分/">展开全文 >></a>
         </p>
       
 
@@ -274,13 +224,13 @@ b=a.map(function(x){return x*x})
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/关于vue-router/">关于vue-router</a>
+      <a class="article-title" href="/2017/07/11/关于vue-router/">关于vue-router</a>
     </h1>
   
 
         
-        <a href="/2017/07/10/关于vue-router/" class="archive-article-date">
-  	<time datetime="2017-07-10T10:20:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
+        <a href="/2017/07/11/关于vue-router/" class="archive-article-date">
+  	<time datetime="2017-07-11T03:02:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
 </a>
         
       </header>
@@ -308,7 +258,57 @@ b=a.map(function(x){return x*x})
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/关于vue-router/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/11/关于vue-router/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-兼容客户端踩坑记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/11/兼容客户端踩坑记录/">h5 兼容客户端踩坑记录</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/11/兼容客户端踩坑记录/" class="archive-article-date">
+  	<time datetime="2017-07-11T03:02:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、场景描述：网页传功能 每1s发送一个请求，（长轮询）获取客户端发送信息，可下载客户端发送的消息<br>1.settimeout 在ios 中离开当前页面就会停止轮询<br>2.下载 在ios 中是直接打开<br>解决方案：并没有太好的解决方案，打开新tab 不会影响轮询页面  </p>
+<p>二、iOS 滑动 迟缓<br>-webkit-overflow-scrolling:touch</p>
+<p>三、uc浏览器 在文字较多的时候，会默认放大字体。<br>解决方案：利用meta 标签</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/11/兼容客户端踩坑记录/">展开全文 >></a>
         </p>
       
 
