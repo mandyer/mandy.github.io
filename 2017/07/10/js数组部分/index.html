@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>mandyer&#39;s records</title>
+  <title>js基础知识 - 数组部分 | mandyer&#39;s records</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="mandyer&#39;s records">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="背景说明:最近重新看了遍 javascript 权威指南 数组部分，发现有一些原生的方法自己记得并不熟，这样不太好… 定义：    数组是值的有序集合，每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示称为索引。数组是动态的，根据需要增长或缩减，数组可能是稀疏的，数组元素的索引不一定要连续，他们之间kennel有空缺针对非稀疏数组，length属性就是数组元素的个数。针对稀疏数组 len">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js基础知识 - 数组部分">
+<meta property="og:url" content="http://yoursite.com/2017/07/10/js数组部分/index.html">
 <meta property="og:site_name" content="mandyer&#39;s records">
+<meta property="og:description" content="背景说明:最近重新看了遍 javascript 权威指南 数组部分，发现有一些原生的方法自己记得并不熟，这样不太好… 定义：    数组是值的有序集合，每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示称为索引。数组是动态的，根据需要增长或缩减，数组可能是稀疏的，数组元素的索引不一定要连续，他们之间kennel有空缺针对非稀疏数组，length属性就是数组元素的个数。针对稀疏数组 len">
+<meta property="og:updated_time" content="2017-07-10T10:58:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mandyer&#39;s records">
+<meta name="twitter:title" content="js基础知识 - 数组部分">
+<meta name="twitter:description" content="背景说明:最近重新看了遍 javascript 权威指南 数组部分，发现有一些原生的方法自己记得并不熟，这样不太好… 定义：    数组是值的有序集合，每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示称为索引。数组是动态的，根据需要增长或缩减，数组可能是稀疏的，数组元素的索引不一定要连续，他们之间kennel有空缺针对非稀疏数组，length属性就是数组元素的个数。针对稀疏数组 len">
   
     <link rel="alternative" href="/atom.xml" title="mandyer&#39;s records" type="application/atom+xml">
   
@@ -145,78 +149,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-兼容客户端踩坑记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-js数组部分" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/11/兼容客户端踩坑记录/">h5 兼容客户端踩坑记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/11/兼容客户端踩坑记录/" class="archive-article-date">
-  	<time datetime="2017-07-11T02:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、场景描述：网页传功能 每1s发送一个请求，（长轮询）获取客户端发送信息，可下载客户端发送的消息<br>1.settimeout 在ios 中离开当前页面就会停止轮询<br>2.下载 在ios 中是直接打开<br>解决方案：并没有太好的解决方案，打开新tab 不会影响轮询页面  </p>
-<p>二、iOS 滑动 迟缓<br>-webkit-overflow-scrolling:touch</p>
-<p>三、uc浏览器 在文字较多的时候，会默认放大字体。<br>解决方案：利用meta 标签<br>        var a=[1,2,3,4,5];<br>        a.slice(0,3)  //[1,2,3]<br>        a.slice(3)   //返回[4,5]<br>10.splice( )<br>在数组中插入或删除元素的通用方法。不同于slice( ),concat( ),splice( ) 会修改调用的数组 。<br>splice( )  能够从数组中删除元素、插入元素到数组中 或者同时完成两种操作<br>.第一个参数指定插入／删除的起始 位置<br>.第二个参数指定了从数组中删除元素的个数，如果省略第二个参数，起始点开始到数组结尾的所有元素都将被删除。<br>结果返回 被删除元素的数组<br>        var a=[1,2,3,4,5,6,7,8];<br>        a.splice(4); 返回 [5,6,7,8] 当前a [1,2,3,4]<br>        a.splice(1,2);返回[2,3]  当前a [1,4]<br>前两个参数指定了需要删除的数组元素，紧随其后的任意个数的参数指定了要插入到数组中的元素，从第一个参数指定的位置到开始插入<br>        var a=[1,2,3,4,5]<br>        a.splice(2,0,’a’,’b’);//  从第二个位置开始，删除0个 并插入’a’,’b’ 返回[ ]当前a为[1,2,’a’,’b’,3,4,5 ]<br>        a.splice(2,2,[1,2],3); //返回[’a’,’b’] a是[1,2,[1,2],3,3,4,5]<br><strong>区别于concat( ) ,splice( ) 会插入数组本身而非数组的元素</strong><br>11.toString( ) 和 toLocaleString( )<br>toString( ) 方法将每一个元素转化为字符数，并且输出用逗号分隔的字符串列表，注意输出不包括 方括号火灾其她人和形式的包裹数组值的分隔符号<br>       [1,2,3].toString() //‘1,2,3’<br>       *同 [1,2,3].join() 一样<br>toLocaleString( )是toString( )方法的本地化版本，它调用元素的toLocaleString( )方法将每个数组元素转化为字符串，并且实用本地化分隔符将这些字符串链接起来形成最终的字符串<br>12.数组类型<br>给定一个未知的对象，判定是否为数组 ES5中可以使用Array.isArray( )函数判定<br>        Array.isArray([]) //true<br>        Array.isArray({}) //false<br>typeof操作符，对数组它返回“对象”<br>instance 操作符 只能用于简单的情形：<br>  [ ] instanceof Array //=&gt;true<br>  ({ }) instanceof Array //=&gt;false<br>使用instanceof的问题是在web浏览器中有可能有多个窗口或窗体（frame），每个窗体都有自己的javascript环境，有自己的全局变量。并且，每个全局对象有自己的一组构造函数。因此一个窗体中的对象将不可能是另外窗体中的构造函数的实例。窗体之间的混淆不常发生，但是这个问题已证明 instanceof 操作符不能视为一个可靠的数组检查方法。</p>
-<p>13.indexOf( ) 和  lastIndexOf( )<br> indexOf( ) 和  lastIndexOf( ) 搜索整个数组中具有给定值的元素，返回找到的第一个元素索引 或者如果没有找到就返回 -1 。indexOf( ) 从头至尾搜索，而lastIndexOf( ) 则返向搜索。<br>一共两个参数，第一个是需要搜索的值，第二个可选参数，指定数组中的索引，从哪里开始搜索，没有的话 indexOf( ) 从第一个开始， lastIndexOf( ) 从最后一个开始<br>六、数组遍历、映射、过滤、检测、简化和搜索<br>ECMAScript5中的数组方法简述：<br>首先大多数方法的第一个参数接收的是一个函数，并对数组的每一个元素调用一次该函数。如果是稀疏数组，对不存在的元素不调用传递的函数。在大多数情况下，调用提供的函数使用三个参数，数组元素、数组的索引和数组本身。大多数数组方法的第一个参数是一个函数，第二个参数是可选的。如果有第二个参数，则调用函数被看做是第二个参数的方法，也就是说，在调用函数时传递的第二个参数作为它的this 关键字的值来使用 。ECMAScript5中的 数组方法都不会修改它们调用的原始数组，当然传递给这些方法的函数可以修改</p>
-<p>1.forEach( )<br>方法从头至尾遍历数组，为每个元素调用指定的函数</p>
-<p>//求数组的和<br>        var data=[1,2,3,4,5];<br>        var sum=0;<br>        data.forEach(function(value){sum + =value;})<br>//数组的每个元素加1<br>data.forEach(function(v,i,a){ a[i]=v+1; }); //data =[2,3,4,5,6]</p>
-<p>注意： forEach( )无法在所有元素都传递给调用的函数之前终止便利，没有类似 for循环中的break 。如果要提前终止，必须把 forEach( )方法防盗try 块中，并能抛出一个异常。如果 forEach( ) 调用的函数抛出 foreach.break  异常，循环提前终止</p>
-<p>2.map( )<br>方法将调用的数组的每一个元素传递给指定的函数，并返回一个数组，包含该函数的返回值。</p>
-<pre><code>a=[1,2,3];
-b=a.map(function(x){return x*x})
-</code></pre><p>//b=[1,4,9] map返回的是新数组，不修改调用的数组。与forEach不同,forEach会改变原数组</p>
-<p>3.filter( )<br>方法返回的元素是调用数组的一个子集，传递的函数是用来逻辑判定的：该函数返回 true 或  false 调用判定函数就像调用forEach map一样。如果返回true ，那么传递给判定函数的元素就是这个子集的成员，它就被添加到一个作为返回值的数组中。</p>
-<p>a=[5,4,3,2,1]<br>a.filter(function(x){return x&lt;3}) //返回[2,1]<br>//filter会跳过稀疏数组中缺少的元素，它返回数组中是稠密的<br>eg:<br>a=a.filter(function(){return true;})<br>//压缩空缺并删除undefined、null<br>a=a.filter(function(x){return x!==undefined &amp;&amp; !==null})</p>
-<p>4.every( ) 和 some( )<br>every( ) 和 some( )方法是数组的逻辑判定：它们对数组元素应用指定函数进行判定，返回true or false<br>every( ) 数组中所有元素都符合 返回true 有一个或多个不符合 返回false<br>some( ) 数组中元素有符合的返回 true ，全都不符合 返回false</p>
-<p>5.reduce( ) 和 reduceRight( )<br> reduce( ) 和 reduceRight( ) 方法使用指定的函数将数组元素进行组合，生成单个值。这在函数式中是常见的操作，也可以称为“注入” 和“折叠” 。举例说明它是如何工作的：<br>var a=[1,2,3,4,5]<br>var sum=a.reduce(function(x,y){ return x+y },0);// 数组求和<br>reduce( )有两个参数，第一个是执行化简操作的函数。化简函数的任务就是用某种方法把两个值组合 或化简为一个值，并返回化简后的值。第二个（可选）参数是一个传递给函数的初始值。<br>reduce( ) 使用的函数与forEach( )、map( ) 使用的函数不同。数组元素、索引、数组本身 作为 2～4 个参数传递给函数。第一个参数是目前为止的化简操作累积</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/11/兼容客户端踩坑记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-js数组部分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/js数组部分/">js基础知识 - 数组部分</a>
+    <h1 class="article-title" itemprop="name">
+      js基础知识 - 数组部分
     </h1>
   
 
@@ -251,78 +191,94 @@ b=a.map(function(x){return x*x})
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/js数组部分/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/10/js数组部分/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-关于vue-router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2017/07/11/兼容客户端踩坑记录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/关于vue-router/">关于vue-router</a>
-    </h1>
-  
-
+          h5 兼容客户端踩坑记录
         
-        <a href="/2017/07/10/关于vue-router/" class="archive-article-date">
-  	<time datetime="2017-07-10T10:20:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>背景说明：使用 Vue 提供的Vue-cli 脚手架，构建项目。如果我们使用的是jquery框架，那么一个页面就会应一个html文件，跳页面是通过访问对应页面的链接实现的。而vue.js是单页应用 这个时候就要用到vue-router了。</p>
-<p>当使用 Vue.js时 ，我们已经可以通过组合组件来组成应用程序，当你要把 vue-router 添加进来，我们需要做的是，将组件(components)映射到路由(routes)，然后告诉 vue-router 在哪里渲染它们。</p>
-<p>1.router的配置<br>在vue-cli 脚手架 中的使用vue-router 相关的配置<br>1.src文件夹下面的 router 文件夹下面 的 index.js文件 如下图所示，<br><img src="https://mandyer.github.io/img/img.png" alt="配置截图">;<br><img src="https://mandyer.github.io/img/img2.png" alt="配置截图">;</p>
-<h2 id="2-使用说明"><a href="#2-使用说明" class="headerlink" title="2.使用说明"></a>2.使用说明</h2><pre><code>// 路由匹配到的组件将渲染在这里:
-   &lt;router-view&gt;&lt;/router-view&gt;
-
-// &lt;router-link&gt; 默认会被渲染成一个 `&lt;a&gt;` 标签:
-   &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;
-</code></pre><hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/关于vue-router/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/10/关于vue-router/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于vue-router</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
 
 
   
+  
+  
+
+  
+
   
 
 
@@ -345,8 +301,8 @@ b=a.map(function(x){return x*x})
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
