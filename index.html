@@ -241,6 +241,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/vue-自定义指令focus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mandy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/26916857?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mandyer 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/01/vue-自定义指令focus/" itemprop="url">vue 自定义指令focus</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-01T11:09:38+08:00">
+                2018-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/01/vue-自定义指令focus/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/01/vue-自定义指令focus/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>背景说明：<br>设计提供的样式如下图，该页面内嵌在安卓机app内部<br>产品的需求是 进入页面弹出软键盘 光标在第一个横线位置<br><img src="http://chuantu.biz/t6/322/1527822880x-1404781288.png" alt="设计样式"><br><strong>看到设计稿后选择实现方案</strong><br>我的方案是 8个下划线是8个input输入框 通过监听keyup事件 返回的keycode 来判断光标的移动方向keycode为8（删除按钮）光标往后移动,其他keycode光标向前移动。并限制每个输入框输入的字符串长度为1<br><strong>进入页面默认获取焦点我首先会想到input的 autofocus 属性</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;text&quot; name=&quot;fname&quot; autofocus=&quot;autofocus&quot; /&gt;</div></pre></td></tr></table></figure>
+<p><em>由于autofocus 在移动版 Safari ，以及在部分app 内嵌页面 中不工作</em></p>
+<p><strong>vue自定义指令</strong><br>在vue中代码复用代码和抽象的主要形式是组件，然而有些情况下仍然需要对普通dom元素进行底层操作，这个时候就会用到自定义指令<br>比如上面提到的需求中需要进入页面第一个输入框获取焦点这个功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 注册一个全局自定义指令 `v-focus`</div><div class="line">Vue.directive(&apos;focus&apos;, &#123;</div><div class="line">  // 当被绑定的元素插入到 DOM 中时……</div><div class="line">  inserted: function (el) &#123;</div><div class="line">    // 聚焦元素</div><div class="line">    el.focus()</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">// 如果想注册局部指令，组件中也接受一个 directives 的选项：</div><div class="line">directives: &#123;</div><div class="line">  focus: &#123;</div><div class="line">    // 指令的定义</div><div class="line">    inserted: function (el) &#123;</div><div class="line">      el.focus()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在模版中的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input v-focus&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>一个指令对象可以提供如下几个钩子函数</strong></p>
+<p>bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。</p>
+<p>inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。</p>
+<p>update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你      可以通过比较更新前后的值来忽略不必要的模板更新 (详细的钩子函数参数见下)。</p>
+<p>componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用。</p>
+<p>unbind：只调用一次，指令与元素解绑时调用。</p>
+<p><strong>钩子函数的参数</strong><br>指令钩子函数会被传入以下参数：</p>
+<p>el：指令所绑定的元素，可以用来直接操作 DOM 。<br>binding：一个对象，包含以下属性：<br>name：指令名，不包括 v- 前缀。<br>value：指令的绑定值，例如：v-my-directive=”1 + 1” 中，绑定值为 2。<br>oldValue：指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。<br>expression：字符串形式的指令表达式。例如 v-my-directive=”1 + 1” 中，表达式为 “1 + 1”。<br>arg：传给指令的参数，可选。例如 v-my-directive:foo 中，参数为 “foo”。<br>modifiers：一个包含修饰符的对象。例如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }。<br>vnode：Vue 编译生成的虚拟节点。移步 <a href="https://cn.vuejs.org/v2/api/#VNode-%E6%8E%A5%E5%8F%A3" target="_blank" rel="external">VNode API</a> 来了解更多详情。<br>oldVnode：上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。</p>
+<p><em>除了 el 之外，其它参数都应该是只读的，切勿进行修改。如果需要在钩子之间共享数据，建议通过元素的 dataset 来进行。</em></p>
+<p> <strong>上面需求的主要代码如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;input v-focus=focusState(parseInt(index+1)) </div><div class="line">  @keyup=&quot;nextFocus(parseInt(index+1),$event,item.value)&quot;</div><div class="line">  v-for=&quot;(item, index) in inputArr&quot;</div><div class="line">  &gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">data()&#123;</div><div class="line">return&#123;</div><div class="line">  inputArr: [</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_1&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_2&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_3&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_4&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_5&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_6&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_7&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_8&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;</div><div class="line">        ],</div><div class="line">        focusIndex: 1,</div><div class="line">        &#125;</div><div class="line">&#125;,</div><div class="line"> methods: &#123;</div><div class="line">    focusState(item)&#123;</div><div class="line">         return item == this.focusIndex</div><div class="line">       &#125;,</div><div class="line">     nextFocus(index, event, value)&#123;</div><div class="line">         if (event.keyCode == 8 || value == &quot;&quot;) &#123;</div><div class="line">          this.focusIndex = index - 1;</div><div class="line">        &#125; else &#123;</div><div class="line">          this.focusIndex = index + 1;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">      &#125;</div><div class="line">     &#125;   </div><div class="line">directives: &#123;</div><div class="line">      focus: &#123;</div><div class="line">        inserted(el, &#123;value&#125;)&#123;</div><div class="line">          if (value) &#123;</div><div class="line">            el.focus();</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line">        update(el, &#123;value&#125;) &#123;</div><div class="line">          if (value) &#123;</div><div class="line">            el.focus();</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div></pre></td></tr></table></figure>
+<p><strong>踩坑</strong><br>1.以上代码运行后点击按钮，时会弹出键盘<br>问题原因是点击按钮的时候 最后一个input输入框正处于获取焦点状态（是代码中设置的获取焦点，不是用户主动点击的）<br>点击按钮时取消input输入框的焦点 问题就可以解决<br>2.嵌入在app内部h5页面 如果要 弹出软键盘、或者是音乐自动播放 都需要安卓同学支持 提供接口或者设置应用默认支持。<br>  如果应用没有支持的或 只用用户主动触发才能达到 弹出软键盘或者播放音乐的效果<br>3.部分安卓机,点击删除有内容时keycode 为299 没有内容删除为8,nextFocus 方法中 加入 通过判断input 输入框是否为空 来解决。<br><strong>总结</strong></p>
+<p>虽然这种方式 可以实现需求，但是通过判断keycode 决定焦点向前或者向后 在部分机器上还是会存在问题，比如  三星有一台机器 监听 不到点击删除按钮 （无奈.png）。希望日后可以找到更好的解决方案</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/17/关于axios/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -646,145 +818,6 @@ b=a.map(function(x){return x*x})
 <p>a=[5,4,3,2,1]<br>a.filter(function(x){return x&lt;3}) //返回[2,1]<br>//filter会跳过稀疏数组中缺少的元素，它返回数组中是稠密的<br>eg:<br>a=a.filter(function(){return true;})<br>//压缩空缺并删除undefined、null<br>a=a.filter(function(x){return x!==undefined &amp;&amp; !==null})</p>
 <p>4.every( ) 和 some( )<br>every( ) 和 some( )方法是数组的逻辑判定：它们对数组元素应用指定函数进行判定，返回true or false<br>every( ) 数组中所有元素都符合 返回true 有一个或多个不符合 返回false<br>some( ) 数组中元素有符合的返回 true ，全都不符合 返回false</p>
 <p>5.reduce( ) 和 reduceRight( )<br> reduce( ) 和 reduceRight( ) 方法使用指定的函数将数组元素进行组合，生成单个值。这在函数式中是常见的操作，也可以称为“注入” 和“折叠” 。举例说明它是如何工作的：<br>var a=[1,2,3,4,5]<br>var sum=a.reduce(function(x,y){ return x+y },0);// 数组求和<br>reduce( )有两个参数，第一个是执行化简操作的函数。化简函数的任务就是用某种方法把两个值组合 或化简为一个值，并返回化简后的值。第二个（可选）参数是一个传递给函数的初始值。<br>reduce( ) 使用的函数与forEach( )、map( ) 使用的函数不同。数组元素、索引、数组本身 作为 2～4 个参数传递给函数。第一个参数是目前为止的化简操作累积</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/11/关于vue-router/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mandy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/26916857?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mandyer 的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/11/关于vue-router/" itemprop="url">关于vue-router</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-11T11:02:19+08:00">
-                2017-07-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/11/关于vue-router/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/11/关于vue-router/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>背景说明：使用 Vue 提供的Vue-cli 脚手架，构建项目。如果我们使用的是jquery框架，那么一个页面就会应一个html文件，跳页面是通过访问对应页面的链接实现的。而vue.js是单页应用 这个时候就要用到vue-router了。</p>
-<p>当使用 Vue.js时 ，我们已经可以通过组合组件来组成应用程序，当你要把 vue-router 添加进来，我们需要做的是，将组件(components)映射到路由(routes)，然后告诉 vue-router 在哪里渲染它们。</p>
-<p>1.router的配置<br>在vue-cli 脚手架 中的使用vue-router 相关的配置<br>1.src文件夹下面的 router 文件夹下面 的 index.js文件 如下图所示，<br><img src="https://mandyer.github.io/img/img.png" alt="配置截图">;<br><img src="https://mandyer.github.io/img/img2.png" alt="配置截图">;</p>
-<h2 id="2-使用说明"><a href="#2-使用说明" class="headerlink" title="2.使用说明"></a>2.使用说明</h2><pre><code>// 路由匹配到的组件将渲染在这里:
-   &lt;router-view&gt;&lt;/router-view&gt;
-
-// &lt;router-link&gt; 默认会被渲染成一个 `&lt;a&gt;` 标签:
-   &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;
-</code></pre><hr>
 
           
         

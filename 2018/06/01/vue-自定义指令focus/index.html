@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="背景说明：设计提供的样式如下图，该页面内嵌在安卓机app内部产品的需求是 进入页面弹出软键盘 光标在第一个横线位置看到设计稿后选择实现方案我的方案是 8个下划线是8个input输入框 通过监听keyup事件 返回的keycode 来判断光标的移动方向keycode为8（删除按钮）光标往后移动,其他keycode光标向前移动。并限制每个输入框输入的字符串长度为1进入页面默认获取焦点我首先会想到inp">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue 自定义指令focus">
+<meta property="og:url" content="http://yoursite.com/2018/06/01/vue-自定义指令focus/index.html">
+<meta property="og:site_name" content="mandyer 的博客">
+<meta property="og:description" content="背景说明：设计提供的样式如下图，该页面内嵌在安卓机app内部产品的需求是 进入页面弹出软键盘 光标在第一个横线位置看到设计稿后选择实现方案我的方案是 8个下划线是8个input输入框 通过监听keyup事件 返回的keycode 来判断光标的移动方向keycode为8（删除按钮）光标往后移动,其他keycode光标向前移动。并限制每个输入框输入的字符串长度为1进入页面默认获取焦点我首先会想到inp">
+<meta property="og:image" content="http://chuantu.biz/t6/322/1527822880x-1404781288.png">
+<meta property="og:updated_time" content="2018-06-01T11:47:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue 自定义指令focus">
+<meta name="twitter:description" content="背景说明：设计提供的样式如下图，该页面内嵌在安卓机app内部产品的需求是 进入页面弹出软键盘 光标在第一个横线位置看到设计稿后选择实现方案我的方案是 8个下划线是8个input输入框 通过监听keyup事件 返回的keycode 来判断光标的移动方向keycode为8（删除按钮）光标往后移动,其他keycode光标向前移动。并限制每个输入框输入的字符串长度为1进入页面默认获取焦点我首先会想到inp">
+<meta name="twitter:image" content="http://chuantu.biz/t6/322/1527822880x-1404781288.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/01/vue-自定义指令focus/"/>
+
+
+
+
+
+  <title>vue 自定义指令focus | mandyer 的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mandyer 的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/vue-自定义指令focus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mandy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/26916857?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mandyer 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue 自定义指令focus</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-01T11:09:38+08:00">
+                2018-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/01/vue-自定义指令focus/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/01/vue-自定义指令focus/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>背景说明：<br>设计提供的样式如下图，该页面内嵌在安卓机app内部<br>产品的需求是 进入页面弹出软键盘 光标在第一个横线位置<br><img src="http://chuantu.biz/t6/322/1527822880x-1404781288.png" alt="设计样式"><br><strong>看到设计稿后选择实现方案</strong><br>我的方案是 8个下划线是8个input输入框 通过监听keyup事件 返回的keycode 来判断光标的移动方向keycode为8（删除按钮）光标往后移动,其他keycode光标向前移动。并限制每个输入框输入的字符串长度为1<br><strong>进入页面默认获取焦点我首先会想到input的 autofocus 属性</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;text&quot; name=&quot;fname&quot; autofocus=&quot;autofocus&quot; /&gt;</div></pre></td></tr></table></figure>
+<p><em>由于autofocus 在移动版 Safari ，以及在部分app 内嵌页面 中不工作</em></p>
+<p><strong>vue自定义指令</strong><br>在vue中代码复用代码和抽象的主要形式是组件，然而有些情况下仍然需要对普通dom元素进行底层操作，这个时候就会用到自定义指令<br>比如上面提到的需求中需要进入页面第一个输入框获取焦点这个功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 注册一个全局自定义指令 `v-focus`</div><div class="line">Vue.directive(&apos;focus&apos;, &#123;</div><div class="line">  // 当被绑定的元素插入到 DOM 中时……</div><div class="line">  inserted: function (el) &#123;</div><div class="line">    // 聚焦元素</div><div class="line">    el.focus()</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">// 如果想注册局部指令，组件中也接受一个 directives 的选项：</div><div class="line">directives: &#123;</div><div class="line">  focus: &#123;</div><div class="line">    // 指令的定义</div><div class="line">    inserted: function (el) &#123;</div><div class="line">      el.focus()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在模版中的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input v-focus&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>一个指令对象可以提供如下几个钩子函数</strong></p>
+<p>bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。</p>
+<p>inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。</p>
+<p>update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你      可以通过比较更新前后的值来忽略不必要的模板更新 (详细的钩子函数参数见下)。</p>
+<p>componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用。</p>
+<p>unbind：只调用一次，指令与元素解绑时调用。</p>
+<p><strong>钩子函数的参数</strong><br>指令钩子函数会被传入以下参数：</p>
+<p>el：指令所绑定的元素，可以用来直接操作 DOM 。<br>binding：一个对象，包含以下属性：<br>name：指令名，不包括 v- 前缀。<br>value：指令的绑定值，例如：v-my-directive=”1 + 1” 中，绑定值为 2。<br>oldValue：指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。<br>expression：字符串形式的指令表达式。例如 v-my-directive=”1 + 1” 中，表达式为 “1 + 1”。<br>arg：传给指令的参数，可选。例如 v-my-directive:foo 中，参数为 “foo”。<br>modifiers：一个包含修饰符的对象。例如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }。<br>vnode：Vue 编译生成的虚拟节点。移步 <a href="https://cn.vuejs.org/v2/api/#VNode-%E6%8E%A5%E5%8F%A3" target="_blank" rel="external">VNode API</a> 来了解更多详情。<br>oldVnode：上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。</p>
+<p><em>除了 el 之外，其它参数都应该是只读的，切勿进行修改。如果需要在钩子之间共享数据，建议通过元素的 dataset 来进行。</em></p>
+<p> <strong>上面需求的主要代码如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;input v-focus=focusState(parseInt(index+1)) </div><div class="line">  @keyup=&quot;nextFocus(parseInt(index+1),$event,item.value)&quot;</div><div class="line">  v-for=&quot;(item, index) in inputArr&quot;</div><div class="line">  &gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">data()&#123;</div><div class="line">return&#123;</div><div class="line">  inputArr: [</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_1&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_2&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_3&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_4&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_5&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_6&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_7&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_8&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;</div><div class="line">        ],</div><div class="line">        focusIndex: 1,</div><div class="line">        &#125;</div><div class="line">&#125;,</div><div class="line"> methods: &#123;</div><div class="line">    focusState(item)&#123;</div><div class="line">         return item == this.focusIndex</div><div class="line">       &#125;,</div><div class="line">     nextFocus(index, event, value)&#123;</div><div class="line">         if (event.keyCode == 8 || value == &quot;&quot;) &#123;</div><div class="line">          this.focusIndex = index - 1;</div><div class="line">        &#125; else &#123;</div><div class="line">          this.focusIndex = index + 1;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">      &#125;</div><div class="line">     &#125;   </div><div class="line">directives: &#123;</div><div class="line">      focus: &#123;</div><div class="line">        inserted(el, &#123;value&#125;)&#123;</div><div class="line">          if (value) &#123;</div><div class="line">            el.focus();</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line">        update(el, &#123;value&#125;) &#123;</div><div class="line">          if (value) &#123;</div><div class="line">            el.focus();</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div></pre></td></tr></table></figure>
+<p><strong>踩坑</strong><br>1.以上代码运行后点击按钮，时会弹出键盘<br>问题原因是点击按钮的时候 最后一个input输入框正处于获取焦点状态（是代码中设置的获取焦点，不是用户主动点击的）<br>点击按钮时取消input输入框的焦点 问题就可以解决<br>2.嵌入在app内部h5页面 如果要 弹出软键盘、或者是音乐自动播放 都需要安卓同学支持 提供接口或者设置应用默认支持。<br>  如果应用没有支持的或 只用用户主动触发才能达到 弹出软键盘或者播放音乐的效果<br>3.部分安卓机,点击删除有内容时keycode 为299 没有内容删除为8,nextFocus 方法中 加入 通过判断input 输入框是否为空 来解决。<br><strong>总结</strong></p>
+<p>虽然这种方式 可以实现需求，但是通过判断keycode 决定焦点向前或者向后 在部分机器上还是会存在问题，比如  三星有一台机器 监听 不到点击删除按钮 （无奈.png）。希望日后可以找到更好的解决方案</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/17/关于axios/" rel="next" title="关于axios">
+                <i class="fa fa-chevron-left"></i> 关于axios
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars2.githubusercontent.com/u/26916857?s=460&v=4"
+                alt="mandy" />
+            
+              <p class="site-author-name" itemprop="name">mandy</p>
+              <p class="site-description motion-element" itemprop="description">积累积累日积月累</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mandy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/06/01/vue-自定义指令focus/';
+          this.page.identifier = '2018/06/01/vue-自定义指令focus/';
+          this.page.title = 'vue 自定义指令focus';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
