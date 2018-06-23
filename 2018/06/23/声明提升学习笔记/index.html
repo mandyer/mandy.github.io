@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="axios," />
+  <meta name="keywords" content="声明提升," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="背景说明：1.项目开发中有些情况是需要我们对项目中所有 发出的请求或返回做统一处理的。例如返回错误码xxx时候需要 需要我们跳转到登录页面，项目的的所有接口都做了登录校验，那这个时候我们需要一个地方来进行统一处理。2.有些接口的调用 需要依赖于其他几个接口返回的数据  一、axios 中的 Interceptors（拦截器）； 官网地址 You can intercept requests or">
-<meta name="keywords" content="axios">
+<meta name="description" content="引擎会在解释js代码之前首先对其进行编译，编译阶段中的一部分工作就是找到所有的声明，并用合适的作用域将它们关联起来。因此正确的思考思路是 包括变量和函数在内的所有声明都会在任何代码被执行前首先被处理。  var a=2; var a; a=2;  第一个定义声明在编译阶段 第二个赋值声明 会被留在原地等待执行阶段。 例子1:   123a=2;var a;console.log(a); 上面的代码">
+<meta name="keywords" content="声明提升">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于axios">
-<meta property="og:url" content="http://yoursite.com/2018/05/17/关于axios/index.html">
+<meta property="og:title" content="声明提升学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/06/23/声明提升学习笔记/index.html">
 <meta property="og:site_name" content="mandyer 的博客">
-<meta property="og:description" content="背景说明：1.项目开发中有些情况是需要我们对项目中所有 发出的请求或返回做统一处理的。例如返回错误码xxx时候需要 需要我们跳转到登录页面，项目的的所有接口都做了登录校验，那这个时候我们需要一个地方来进行统一处理。2.有些接口的调用 需要依赖于其他几个接口返回的数据  一、axios 中的 Interceptors（拦截器）； 官网地址 You can intercept requests or">
-<meta property="og:updated_time" content="2018-06-19T03:38:49.000Z">
+<meta property="og:description" content="引擎会在解释js代码之前首先对其进行编译，编译阶段中的一部分工作就是找到所有的声明，并用合适的作用域将它们关联起来。因此正确的思考思路是 包括变量和函数在内的所有声明都会在任何代码被执行前首先被处理。  var a=2; var a; a=2;  第一个定义声明在编译阶段 第二个赋值声明 会被留在原地等待执行阶段。 例子1:   123a=2;var a;console.log(a); 上面的代码">
+<meta property="og:updated_time" content="2018-06-23T15:06:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于axios">
-<meta name="twitter:description" content="背景说明：1.项目开发中有些情况是需要我们对项目中所有 发出的请求或返回做统一处理的。例如返回错误码xxx时候需要 需要我们跳转到登录页面，项目的的所有接口都做了登录校验，那这个时候我们需要一个地方来进行统一处理。2.有些接口的调用 需要依赖于其他几个接口返回的数据  一、axios 中的 Interceptors（拦截器）； 官网地址 You can intercept requests or">
+<meta name="twitter:title" content="声明提升学习笔记">
+<meta name="twitter:description" content="引擎会在解释js代码之前首先对其进行编译，编译阶段中的一部分工作就是找到所有的声明，并用合适的作用域将它们关联起来。因此正确的思考思路是 包括变量和函数在内的所有声明都会在任何代码被执行前首先被处理。  var a=2; var a; a=2;  第一个定义声明在编译阶段 第二个赋值声明 会被留在原地等待执行阶段。 例子1:   123a=2;var a;console.log(a); 上面的代码">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/17/关于axios/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/23/声明提升学习笔记/"/>
 
 
 
 
 
-  <title>关于axios | mandyer 的博客</title>
+  <title>声明提升学习笔记 | mandyer 的博客</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/17/关于axios/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/声明提升学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mandy">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于axios</h1>
+          <h1 class="post-title" itemprop="name headline">声明提升学习笔记</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T18:25:09+08:00">
-                2018-05-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T22:27:00+08:00">
+                2018-06-23
               </time>
             
 
@@ -294,8 +294,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
                   </a>
                 </span>
 
@@ -312,9 +312,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/17/关于axios/#comments" itemprop="discussionUrl">
+                <a href="/2018/06/23/声明提升学习笔记/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/17/关于axios/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/06/23/声明提升学习笔记/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -342,20 +342,32 @@
       
 
       
-        <p>背景说明：<br>1.项目开发中有些情况是需要我们对项目中所有 发出的请求或返回做统一处理的。<br>例如返回错误码xxx时候需要 需要我们跳转到登录页面，项目的的所有接口都做了登录校验，那这个时候我们需要一个地方来进行统一处理。<br>2.有些接口的调用 需要依赖于其他几个接口返回的数据 </p>
-<p>一、axios 中的 Interceptors（拦截器）；</p>
-<p><a href="https://www.npmjs.com/package/axios" target="_blank" rel="external">官网地址</a></p>
-<p><em>You can intercept requests or responses before they are handled by then or catch.</em> </p>
-<p>我们可以在then 和 catch 处理之前 拦截requests、responses </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// Add a request interceptor</div><div class="line">axios.interceptors.request.use(function (config) &#123;</div><div class="line">    // Do something before request is sent</div><div class="line">    return config;</div><div class="line">  &#125;, function (error) &#123;</div><div class="line">    // Do something with request error</div><div class="line">    return Promise.reject(error);</div><div class="line">  &#125;);</div><div class="line"> </div><div class="line">// Add a response interceptor</div><div class="line">axios.interceptors.response.use(function (response) &#123;</div><div class="line">    // Do something with response data</div><div class="line">    return response;</div><div class="line">  &#125;, function (error) &#123;</div><div class="line">    // Do something with response error</div><div class="line">    return Promise.reject(error);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
-<p>If you may need to remove an interceptor later you can.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var myInterceptor = axios.interceptors.request.use(function () &#123;/*...*/&#125;);</div><div class="line">axios.interceptors.request.eject(myInterceptor);</div></pre></td></tr></table></figure></p>
-<p>You can add interceptors to a custom instance of axios.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var instance = axios.create();</div><div class="line">instance.interceptors.request.use(function () &#123;/*...*/&#125;);</div></pre></td></tr></table></figure></p>
-<p>我的做法创建一个 interceptors.js文件 在该文件中引入 axios，写上拦截相关代码，其他文件中以</p>
-<p>import axios from ‘./intercept’;方式引入 axios</p>
-<p>二、执行多个并发请求，后执行其他代码</p>
-<p> 一次性并发多个请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function getUserAccount() &#123;</div><div class="line">  return axios.get(&apos;/user/12345&apos;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">function getUserPermissions() &#123;</div><div class="line">  return axios.get(&apos;/user/12345/permissions&apos;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">axios.all([getUserAccount(), getUserPermissions()])</div><div class="line">  .then(axios.spread(function (acct, perms) &#123;</div><div class="line">    // Both requests are now complete</div><div class="line">  &#125;));</div><div class="line">//当这两个请求都完成的时候会触发这个函数，acct和perms 两个参数分别代表返回的结果</div></pre></td></tr></table></figure>
-<p><strong>总结：读文档很重要，只有了解了文档之后才能更好地使用它</strong></p>
+        <p>引擎会在解释js代码之前首先对其进行编译，编译阶段中的一部分工作就是找到所有的声明，并用合适的作用域将它们关联起来。因此正确的思考思路是 包括变量和函数在内的所有声明都会在任何代码被执行前首先被处理。<br>  var a=2; var a; a=2;  第一个定义声明在编译阶段 第二个赋值声明 会被留在原地等待执行阶段。</p>
+<p>例子1:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a=2;</div><div class="line">var a;</div><div class="line">console.log(a);</div></pre></td></tr></table></figure>
+<p>上面的代码 真正的执行情况如下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a;</div><div class="line">a=2;</div><div class="line">console.log(a);//2</div></pre></td></tr></table></figure>
+<p>例子2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(a);</div><div class="line">var a=2;</div></pre></td></tr></table></figure>
+<p>上面的代码 真正的执行情况如下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a;</div><div class="line">console.log(a);//undefine;</div><div class="line">a=2;</div></pre></td></tr></table></figure>
+<p><strong>只有声明本身会被提升</strong>，而赋值或者其他运行逻辑会留在原地   </p>
+<p><strong>函数声明提升</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">foo();</div><div class="line">function foo()&#123;</div><div class="line">    console.log(a) </div><div class="line">    var a=2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码 真正的执行情况如下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    var a;</div><div class="line">    console.log(a);</div><div class="line">    a=2;</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo();</div></pre></td></tr></table></figure>
+<p>通过上面的例子可以看出函数声明会被提升，但是函数表达式却不会    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">foo();//typeError!</div><div class="line">var foo=function bar()&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码 真正的执行情况如下   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var foo;</div><div class="line">foo();</div><div class="line">foo=function bar()&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>函数优先</strong><br>函数声明和变量声明都会被提升，但是 函数会首先被提升，然后才是变量。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">foo();//1</div><div class="line">var foo;</div><div class="line">function foo()&#123;</div><div class="line">    console.log(1);</div><div class="line">&#125;</div><div class="line">foo=function()&#123;</div><div class="line">    console.log(2)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码 真正的执行情况如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function foo() &#123; console.log( 1 );</div><div class="line">&#125;</div><div class="line">foo(); // 1</div><div class="line">foo = function() &#123; console.log( 2 );</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>小结</strong><br>我们习惯将var a = 2;看作一个声明，而实际上JavaScript引擎并不这么认为。它将var a和a = 2当作两个单独的声明，第一个是编译阶段的任务，而第二个则是执行阶段的任务。    </p>
+<p>这意味着无论作用域中的声明出现在什么地方，都将在代码本身被执行前首先进行处理。 可以将这个过程形象地想象成所有的声明(变量和函数)都会被“移动”到各自作用域的 最顶端，这个过程被称为提升。   </p>
+<p>声明本身会被提升，而包括函数表达式的赋值在内的赋值操作并不会提升。    </p>
+<p>要注意避免重复声明，特别是当普通的 var 声明和函数声明混合在一起的时候，否则会引<br>起很多危险的问题!</p>
 
       
     </div>
@@ -373,7 +385,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/axios/" rel="tag"># axios</a>
+            <a href="/tags/声明提升/" rel="tag"># 声明提升</a>
           
         </div>
       
@@ -386,15 +398,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/06/19/this-机制学习笔记/" rel="next" title="this 机制学习笔记">
+                <i class="fa fa-chevron-left"></i> this 机制学习笔记
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/09/同时管理多个ssh-key/" rel="prev" title="同时管理多个ssh key">
-                同时管理多个ssh key <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -685,9 +697,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/05/17/关于axios/';
-          this.page.identifier = '2018/05/17/关于axios/';
-          this.page.title = '关于axios';
+          this.page.url = 'http://yoursite.com/2018/06/23/声明提升学习笔记/';
+          this.page.identifier = '2018/06/23/声明提升学习笔记/';
+          this.page.title = '声明提升学习笔记';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';

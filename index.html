@@ -241,6 +241,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/声明提升学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mandy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/26916857?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mandyer 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/23/声明提升学习笔记/" itemprop="url">声明提升学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T22:27:00+08:00">
+                2018-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/23/声明提升学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/23/声明提升学习笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>引擎会在解释js代码之前首先对其进行编译，编译阶段中的一部分工作就是找到所有的声明，并用合适的作用域将它们关联起来。因此正确的思考思路是 包括变量和函数在内的所有声明都会在任何代码被执行前首先被处理。<br>  var a=2; var a; a=2;  第一个定义声明在编译阶段 第二个赋值声明 会被留在原地等待执行阶段。</p>
+<p>例子1:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a=2;</div><div class="line">var a;</div><div class="line">console.log(a);</div></pre></td></tr></table></figure>
+<p>上面的代码 真正的执行情况如下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a;</div><div class="line">a=2;</div><div class="line">console.log(a);//2</div></pre></td></tr></table></figure>
+<p>例子2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(a);</div><div class="line">var a=2;</div></pre></td></tr></table></figure>
+<p>上面的代码 真正的执行情况如下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a;</div><div class="line">console.log(a);//undefine;</div><div class="line">a=2;</div></pre></td></tr></table></figure>
+<p><strong>只有声明本身会被提升</strong>，而赋值或者其他运行逻辑会留在原地   </p>
+<p><strong>函数声明提升</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">foo();</div><div class="line">function foo()&#123;</div><div class="line">    console.log(a) </div><div class="line">    var a=2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码 真正的执行情况如下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    var a;</div><div class="line">    console.log(a);</div><div class="line">    a=2;</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo();</div></pre></td></tr></table></figure>
+<p>通过上面的例子可以看出函数声明会被提升，但是函数表达式却不会    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">foo();//typeError!</div><div class="line">var foo=function bar()&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码 真正的执行情况如下   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var foo;</div><div class="line">foo();</div><div class="line">foo=function bar()&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>函数优先</strong><br>函数声明和变量声明都会被提升，但是 函数会首先被提升，然后才是变量。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">foo();//1</div><div class="line">var foo;</div><div class="line">function foo()&#123;</div><div class="line">    console.log(1);</div><div class="line">&#125;</div><div class="line">foo=function()&#123;</div><div class="line">    console.log(2)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码 真正的执行情况如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function foo() &#123; console.log( 1 );</div><div class="line">&#125;</div><div class="line">foo(); // 1</div><div class="line">foo = function() &#123; console.log( 2 );</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>小结</strong><br>我们习惯将var a = 2;看作一个声明，而实际上JavaScript引擎并不这么认为。它将var a和a = 2当作两个单独的声明，第一个是编译阶段的任务，而第二个则是执行阶段的任务。    </p>
+<p>这意味着无论作用域中的声明出现在什么地方，都将在代码本身被执行前首先进行处理。 可以将这个过程形象地想象成所有的声明(变量和函数)都会被“移动”到各自作用域的 最顶端，这个过程被称为提升。   </p>
+<p>声明本身会被提升，而包括函数表达式的赋值在内的赋值操作并不会提升。    </p>
+<p>要注意避免重复声明，特别是当普通的 var 声明和函数声明混合在一起的时候，否则会引<br>起很多危险的问题!</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/this-机制学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -996,7 +1174,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1018,7 +1196,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
