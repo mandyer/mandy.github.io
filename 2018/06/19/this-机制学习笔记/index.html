@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="this," />
 
 
 
@@ -79,15 +79,17 @@
 
 
 
-<meta name="description" content="积累积累日积月累">
-<meta property="og:type" content="website">
-<meta property="og:title" content="mandyer 的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="学习源：你不知道的JavaScript (上卷) 、MDN、知乎优秀回答 this关键字是JavaScript中最复杂的机制之一。  this 是一个很特别的关键字，会被自动定义在所有函数的作用域中。为什么要用this1234567891011function identify()&amp;#123;    return this.name.toUpperCase();&amp;#125;var me=&amp;#123">
+<meta name="keywords" content="this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="this 机制学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/06/19/this-机制学习笔记/index.html">
 <meta property="og:site_name" content="mandyer 的博客">
-<meta property="og:description" content="积累积累日积月累">
+<meta property="og:description" content="学习源：你不知道的JavaScript (上卷) 、MDN、知乎优秀回答 this关键字是JavaScript中最复杂的机制之一。  this 是一个很特别的关键字，会被自动定义在所有函数的作用域中。为什么要用this1234567891011function identify()&amp;#123;    return this.name.toUpperCase();&amp;#125;var me=&amp;#123">
+<meta property="og:updated_time" content="2018-06-23T08:30:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mandyer 的博客">
-<meta name="twitter:description" content="积累积累日积月累">
+<meta name="twitter:title" content="this 机制学习笔记">
+<meta name="twitter:description" content="学习源：你不知道的JavaScript (上卷) 、MDN、知乎优秀回答 this关键字是JavaScript中最复杂的机制之一。  this 是一个很特别的关键字，会被自动定义在所有函数的作用域中。为什么要用this1234567891011function identify()&amp;#123;    return this.name.toUpperCase();&amp;#125;var me=&amp;#123">
 
 
 
@@ -117,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/19/this-机制学习笔记/"/>
 
 
 
 
 
-  <title>mandyer 的博客</title>
+  <title>this 机制学习笔记 | mandyer 的博客</title>
   
 
 
@@ -142,8 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,9 +227,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -258,9 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/19/this-机制学习笔记/" itemprop="url">this 机制学习笔记</a></h1>
+          <h1 class="post-title" itemprop="name headline">this 机制学习笔记</h1>
         
 
         <div class="post-meta">
@@ -343,9 +342,7 @@
       
 
       
-        
-          
-            <p><strong>学习源：你不知道的JavaScript (上卷) 、MDN、知乎优秀回答</strong></p>
+        <p><strong>学习源：你不知道的JavaScript (上卷) 、MDN、知乎优秀回答</strong></p>
 <p><strong>this关键字是JavaScript中最复杂的机制之一。</strong> </p>
 <p>this 是一个很特别的关键字，会被自动定义在所有函数的作用域中。<br><strong>为什么要用this</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function identify()&#123;</div><div class="line">    return this.name.toUpperCase();</div><div class="line">&#125;</div><div class="line">var me=&#123;</div><div class="line">    name:&apos;mandy&apos;</div><div class="line">&#125;;</div><div class="line">var you=&#123;</div><div class="line">    name:&apos;reader&apos;</div><div class="line">&#125;</div><div class="line">identify.call(me); //MANDY</div><div class="line">identify.call(you); //READER</div></pre></td></tr></table></figure></p>
 <p>以上代码，可以在不同的上下文对象（me 和 you）中重复使用函数 identify()，不用针对每个对象编写不同版本<br>如果不使用this那么就需要给identify 显式得传入一个上下文对象  例子如下</p>
@@ -408,8 +405,6 @@
 <p> <strong>小结</strong></p>
 <p> <strong>如果要判断一个运行中函数的this绑定，就需要找到这个函数调用位置，找到之后就可以顺序应用下面四条规则来判断this的绑定对象。<br> 1.new 调用？绑定到新创建的对象<br> 2.call 、apply、bind调用？ 绑定到指定的对象<br> 3.由上下文对象调用？绑定到那个上下文对象<br> 4.默认 :严格模式下绑定到undefined 否则绑定到全局对象<br> 一定要注意这些调用可能在无意间使用默认绑定，如果想更安全抵忽略this 绑定 可以使用一个DMZ对象 比如 Object.create(null) 以保护全局对象<br> ES6中的箭头函数不会使用四条标准绑定规则，而是根据当前的词法作用域来决定this，具体来说 箭头函数会继承外层函数调用的this绑定<br> 这其实和ES6 之前代码中 self=this 机制一样</strong>  </p>
 
-          
-        
       
     </div>
     
@@ -424,352 +419,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/16/vue-自定义指令focus/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mandy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/26916857?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mandyer 的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/16/vue-自定义指令focus/" itemprop="url">vue 自定义指令focus</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-16T11:09:38+08:00">
-                2018-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/this/" rel="tag"># this</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/16/vue-自定义指令focus/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/16/vue-自定义指令focus/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>背景说明：<br>设计提供的样式如下图，该页面内嵌在安卓机app内部<br>产品的需求是 进入页面弹出软键盘 光标在第一个横线位置<br><img src="http://chuantu.biz/t6/322/1527822880x-1404781288.png" alt="设计样式"><br><strong>看到设计稿后选择实现方案</strong><br>我的方案是 8个下划线是8个input输入框 通过监听keyup事件 返回的keycode 来判断光标的移动方向keycode为8（删除按钮）光标往后移动,其他keycode光标向前移动。并限制每个输入框输入的字符串长度为1<br><strong>进入页面默认获取焦点我首先会想到input的 autofocus 属性</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;text&quot; name=&quot;fname&quot; autofocus=&quot;autofocus&quot; /&gt;</div></pre></td></tr></table></figure>
-<p><em>由于autofocus 在移动版 Safari ，以及在部分app 内嵌页面 中不工作</em></p>
-<p><strong>vue自定义指令</strong><br>在vue中代码复用代码和抽象的主要形式是组件，然而有些情况下仍然需要对普通dom元素进行底层操作，这个时候就会用到自定义指令<br>比如上面提到的需求中需要进入页面第一个输入框获取焦点这个功能</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 注册一个全局自定义指令 `v-focus`</div><div class="line">Vue.directive(&apos;focus&apos;, &#123;</div><div class="line">  // 当被绑定的元素插入到 DOM 中时……</div><div class="line">  inserted: function (el) &#123;</div><div class="line">    // 聚焦元素</div><div class="line">    el.focus()</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">// 如果想注册局部指令，组件中也接受一个 directives 的选项：</div><div class="line">directives: &#123;</div><div class="line">  focus: &#123;</div><div class="line">    // 指令的定义</div><div class="line">    inserted: function (el) &#123;</div><div class="line">      el.focus()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在模版中的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input v-focus&gt;</div></pre></td></tr></table></figure></p>
-<p><strong>一个指令对象可以提供如下几个钩子函数</strong></p>
-<p>bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。</p>
-<p>inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。</p>
-<p>update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你      可以通过比较更新前后的值来忽略不必要的模板更新 (详细的钩子函数参数见下)。</p>
-<p>componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用。</p>
-<p>unbind：只调用一次，指令与元素解绑时调用。</p>
-<p><strong>钩子函数的参数</strong><br>指令钩子函数会被传入以下参数：</p>
-<p>el：指令所绑定的元素，可以用来直接操作 DOM 。<br>binding：一个对象，包含以下属性：<br>name：指令名，不包括 v- 前缀。<br>value：指令的绑定值，例如：v-my-directive=”1 + 1” 中，绑定值为 2。<br>oldValue：指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。<br>expression：字符串形式的指令表达式。例如 v-my-directive=”1 + 1” 中，表达式为 “1 + 1”。<br>arg：传给指令的参数，可选。例如 v-my-directive:foo 中，参数为 “foo”。<br>modifiers：一个包含修饰符的对象。例如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }。<br>vnode：Vue 编译生成的虚拟节点。移步 <a href="https://cn.vuejs.org/v2/api/#VNode-%E6%8E%A5%E5%8F%A3" target="_blank" rel="external">VNode API</a> 来了解更多详情。<br>oldVnode：上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。</p>
-<p><em>除了 el 之外，其它参数都应该是只读的，切勿进行修改。如果需要在钩子之间共享数据，建议通过元素的 dataset 来进行。</em></p>
-<p> <strong>上面需求的主要代码如下</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;input v-focus=focusState(parseInt(index+1)) </div><div class="line">  @keyup=&quot;nextFocus(parseInt(index+1),$event,item.value)&quot;</div><div class="line">  v-for=&quot;(item, index) in inputArr&quot;</div><div class="line">  &gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">data()&#123;</div><div class="line">return&#123;</div><div class="line">  inputArr: [</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_1&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_2&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_3&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_4&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_5&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_6&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_7&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;,</div><div class="line">          &#123;</div><div class="line">            name: &apos;input_8&apos;,</div><div class="line">            value: &apos;&apos;,</div><div class="line">          &#125;</div><div class="line">        ],</div><div class="line">        focusIndex: 1,</div><div class="line">        &#125;</div><div class="line">&#125;,</div><div class="line"> methods: &#123;</div><div class="line">    focusState(item)&#123;</div><div class="line">         return item == this.focusIndex</div><div class="line">       &#125;,</div><div class="line">     nextFocus(index, event, value)&#123;</div><div class="line">         if (event.keyCode == 8 || value == &quot;&quot;) &#123;</div><div class="line">          this.focusIndex = index - 1;</div><div class="line">        &#125; else &#123;</div><div class="line">          this.focusIndex = index + 1;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">      &#125;</div><div class="line">     &#125;   </div><div class="line">directives: &#123;</div><div class="line">      focus: &#123;</div><div class="line">        inserted(el, &#123;value&#125;)&#123;</div><div class="line">          if (value) &#123;</div><div class="line">            el.focus();</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line">        update(el, &#123;value&#125;) &#123;</div><div class="line">          if (value) &#123;</div><div class="line">            el.focus();</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div></pre></td></tr></table></figure>
-<p><strong>踩坑</strong><br>1.以上代码运行后点击按钮，时会弹出键盘<br>问题原因是点击按钮的时候 最后一个input输入框正处于获取焦点状态（是代码中设置的获取焦点，不是用户主动点击的）<br>点击按钮时取消input输入框的焦点 问题就可以解决<br>2.嵌入在app内部h5页面 如果要 弹出软键盘、或者是音乐自动播放 都需要安卓同学支持 提供接口或者设置应用默认支持。<br>  如果应用没有支持的或 只用用户主动触发才能达到 弹出软键盘或者播放音乐的效果<br>3.部分安卓机,点击删除有内容时keycode 为299 没有内容删除为8,nextFocus 方法中 加入 通过判断input 输入框是否为空 来解决。<br><strong>总结</strong></p>
-<p>虽然这种方式 可以实现需求，但是通过判断keycode 决定焦点向前或者向后 在部分机器上还是会存在问题，比如  三星有一台机器 监听 不到点击删除按钮 （无奈.png）。希望日后可以找到更好的解决方案</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/09/同时管理多个ssh-key/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mandy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/26916857?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mandyer 的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/09/同时管理多个ssh-key/" itemprop="url">同时管理多个ssh key</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-09T00:37:51+08:00">
-                2018-06-09
-              </time>
+              <a href="/2018/06/16/vue-自定义指令focus/" rel="next" title="vue 自定义指令focus">
+                <i class="fa fa-chevron-left"></i> vue 自定义指令focus
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/配置/" itemprop="url" rel="index">
-                    <span itemprop="name">配置</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/09/同时管理多个ssh-key/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/09/同时管理多个ssh-key/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>总结这周遇到的坑<br> 配置Github密钥 覆盖掉了 原本 gitlab生成的id_rsa和id_rsa.pub文件。<br> 然后公司的代码不能上传不能拉去，Github的代码也没传上去<br> <a href="https://docs.gitlab.com/ee/ssh/" target="_blank" rel="external">gitlab 文档</a><br> <a href="https://help.github.com/" target="_blank" rel="external">github help文档</a><br> 万能的一句话 有问题找文档，官方提供的文档更全面准确，比百度 一抓一大把的解决方案来的更可靠。  </p>
-<p> 首先恢复公司使用的 gitlab</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">~            //进入 ～</div><div class="line">cd .ssh      //进入 .ssh </div><div class="line">ssh-keygen -t ras -C &quot;公司邮箱&quot; //生成ssh key</div></pre></td></tr></table></figure>
-<p>运行完以上命令 ll 可以看到 .ssh下面 有 id_rsa 和 id_rsa.pub 两个文件<br>id_rsa.pub 中的内容使我们需要配置到 gitlab里面的密钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure></p>
-<p>执行上行命令会看到 ssh-rsa 开头 邮箱结尾的 字符串<br>将字符串复制到gitlab 配置中,可以测试下<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -T git@xx.xxx.xxx</div></pre></td></tr></table></figure></p>
-<p>返回 Welcome to GitLab, xxx!  就说明配置正确了</p>
-<p>接下来配置自己用的GitHub<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">~            //进入 ～</div><div class="line">cd .ssh      //进入 .ssh </div><div class="line">ssh-keygen -t ras -C &quot;自己的邮箱&quot; //生成ssh key</div></pre></td></tr></table></figure></p>
-<p>这次与第一次配置不同的是 不可以一路回车到底，以为 自己邮箱生成的密钥 会覆盖掉 上一次用公司邮箱生成密钥， 通过重命名的方式 避免覆盖<br> <img src="http://chuantu.biz/t6/326/1528469922x-1404775521.png" alt="Alt text">  </p>
-<p> 添加私钥  </p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh-add ~/.ssh/id_rsa</div><div class="line">ssh-add ~/.ssh/id_rsa_github</div></pre></td></tr></table></figure>
-<p>修改配置文件  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># gitlab</div><div class="line">    Host gitlab.com</div><div class="line">        HostName gitlab.com</div><div class="line">        PreferredAuthentications publickey</div><div class="line">        IdentityFile ~/.ssh/id_rsa</div><div class="line">    # github</div><div class="line">    Host github.com</div><div class="line">        HostName github.com</div><div class="line">        PreferredAuthentications publickey</div><div class="line">        IdentityFile ~/.ssh/id_rsa_github</div></pre></td></tr></table></figure>
-<p>测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github.com</div></pre></td></tr></table></figure></p>
-<p>返回 Hi xxx! You’ve successfully authenticated, but GitHub does not provide shell access. 就说明配置成功了</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -779,176 +458,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/17/关于axios/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mandy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/26916857?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mandyer 的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/17/关于axios/" itemprop="url">关于axios</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T18:25:09+08:00">
-                2018-05-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/05/17/关于axios/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/17/关于axios/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>背景说明：<br>1.项目开发中有些情况是需要我们对项目中所有 发出的请求或返回做统一处理的。<br>例如返回错误码xxx时候需要 需要我们跳转到登录页面，项目的的所有接口都做了登录校验，那这个时候我们需要一个地方来进行统一处理。<br>2.有些接口的调用 需要依赖于其他几个接口返回的数据 </p>
-<p>一、axios 中的 Interceptors（拦截器）；</p>
-<p><a href="https://www.npmjs.com/package/axios" target="_blank" rel="external">官网地址</a></p>
-<p><em>You can intercept requests or responses before they are handled by then or catch.</em> </p>
-<p>我们可以在then 和 catch 处理之前 拦截requests、responses </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// Add a request interceptor</div><div class="line">axios.interceptors.request.use(function (config) &#123;</div><div class="line">    // Do something before request is sent</div><div class="line">    return config;</div><div class="line">  &#125;, function (error) &#123;</div><div class="line">    // Do something with request error</div><div class="line">    return Promise.reject(error);</div><div class="line">  &#125;);</div><div class="line"> </div><div class="line">// Add a response interceptor</div><div class="line">axios.interceptors.response.use(function (response) &#123;</div><div class="line">    // Do something with response data</div><div class="line">    return response;</div><div class="line">  &#125;, function (error) &#123;</div><div class="line">    // Do something with response error</div><div class="line">    return Promise.reject(error);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
-<p>If you may need to remove an interceptor later you can.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var myInterceptor = axios.interceptors.request.use(function () &#123;/*...*/&#125;);</div><div class="line">axios.interceptors.request.eject(myInterceptor);</div></pre></td></tr></table></figure></p>
-<p>You can add interceptors to a custom instance of axios.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var instance = axios.create();</div><div class="line">instance.interceptors.request.use(function () &#123;/*...*/&#125;);</div></pre></td></tr></table></figure></p>
-<p>我的做法创建一个 interceptors.js文件 在该文件中引入 axios，写上拦截相关代码，其他文件中以</p>
-<p>import axios from ‘./intercept’;方式引入 axios</p>
-<p>二、执行多个并发请求，后执行其他代码</p>
-<p> 一次性并发多个请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function getUserAccount() &#123;</div><div class="line">  return axios.get(&apos;/user/12345&apos;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">function getUserPermissions() &#123;</div><div class="line">  return axios.get(&apos;/user/12345/permissions&apos;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">axios.all([getUserAccount(), getUserPermissions()])</div><div class="line">  .then(axios.spread(function (acct, perms) &#123;</div><div class="line">    // Both requests are now complete</div><div class="line">  &#125;));</div><div class="line">//当这两个请求都完成的时候会触发这个函数，acct和perms 两个参数分别代表返回的结果</div></pre></td></tr></table></figure>
-<p><strong>总结：读文档很重要，只有了解了文档之后才能更好地使用它</strong></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -956,6 +470,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1181,6 +709,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1198,6 +730,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/06/19/this-机制学习笔记/';
+          this.page.identifier = '2018/06/19/this-机制学习笔记/';
+          this.page.title = 'this 机制学习笔记';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
