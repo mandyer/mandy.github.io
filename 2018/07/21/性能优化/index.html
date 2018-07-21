@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="axios," />
+  <meta name="keywords" content="性能优化," />
 
 
 
@@ -79,17 +79,26 @@
 
 
 
-<meta name="description" content="背景说明：1.项目开发中有些情况是需要我们对项目中所有 发出的请求或返回做统一处理的。例如返回错误码xxx时候需要 需要我们跳转到登录页面，项目的的所有接口都做了登录校验，那这个时候我们需要一个地方来进行统一处理。2.有些接口的调用 需要依赖于其他几个接口返回的数据  一、axios 中的 Interceptors（拦截器）； 官网地址 You can intercept requests or">
-<meta name="keywords" content="axios">
+<meta name="description" content="背景说明：组长要求每人整理一份 性能优化方案分析过程：以官网（没有业务逻辑，图片较多）和大转盘活动为例（业务逻辑代码较多）性能分析工具 lighthouse &amp;amp; PageSpeed   官网下面三张图片是英文官网pc端 首页的截图，可以清晰的看出图片占比总资源的 1.5MB/1.6MB 图片占据了大量的视觉空间，所以对于官网来说图片的优化是我们性能优化的重点   雪碧图下图中明显的一个可优">
+<meta name="keywords" content="性能优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于axios">
-<meta property="og:url" content="http://yoursite.com/2018/05/17/关于axios/index.html">
+<meta property="og:title" content="性能优化">
+<meta property="og:url" content="http://yoursite.com/2018/07/21/性能优化/index.html">
 <meta property="og:site_name" content="mandyer 的博客">
-<meta property="og:description" content="背景说明：1.项目开发中有些情况是需要我们对项目中所有 发出的请求或返回做统一处理的。例如返回错误码xxx时候需要 需要我们跳转到登录页面，项目的的所有接口都做了登录校验，那这个时候我们需要一个地方来进行统一处理。2.有些接口的调用 需要依赖于其他几个接口返回的数据  一、axios 中的 Interceptors（拦截器）； 官网地址 You can intercept requests or">
-<meta property="og:updated_time" content="2018-06-19T03:38:49.000Z">
+<meta property="og:description" content="背景说明：组长要求每人整理一份 性能优化方案分析过程：以官网（没有业务逻辑，图片较多）和大转盘活动为例（业务逻辑代码较多）性能分析工具 lighthouse &amp;amp; PageSpeed   官网下面三张图片是英文官网pc端 首页的截图，可以清晰的看出图片占比总资源的 1.5MB/1.6MB 图片占据了大量的视觉空间，所以对于官网来说图片的优化是我们性能优化的重点   雪碧图下图中明显的一个可优">
+<meta property="og:image" content="http://chuantu.biz/t6/346/1532185419x-1376440240.png">
+<meta property="og:image" content="http://chuantu.biz/t6/346/1532185473x-1376440240.png">
+<meta property="og:image" content="http://chuantu.biz/t6/346/1532185489x-1376440240.png">
+<meta property="og:image" content="http://chuantu.biz/t6/346/1532185669x1822611413.png">
+<meta property="og:image" content="http://chuantu.biz/t6/346/1532185764x-1376440240.png">
+<meta property="og:image" content="http://chuantu.biz/t6/346/1532186015x-1404755576.png">
+<meta property="og:image" content="http://chuantu.biz/t6/346/1532186301x1822611251.png">
+<meta property="og:image" content="http://chuantu.biz/t6/346/1532186319x1822611251.png">
+<meta property="og:updated_time" content="2018-07-21T15:20:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于axios">
-<meta name="twitter:description" content="背景说明：1.项目开发中有些情况是需要我们对项目中所有 发出的请求或返回做统一处理的。例如返回错误码xxx时候需要 需要我们跳转到登录页面，项目的的所有接口都做了登录校验，那这个时候我们需要一个地方来进行统一处理。2.有些接口的调用 需要依赖于其他几个接口返回的数据  一、axios 中的 Interceptors（拦截器）； 官网地址 You can intercept requests or">
+<meta name="twitter:title" content="性能优化">
+<meta name="twitter:description" content="背景说明：组长要求每人整理一份 性能优化方案分析过程：以官网（没有业务逻辑，图片较多）和大转盘活动为例（业务逻辑代码较多）性能分析工具 lighthouse &amp;amp; PageSpeed   官网下面三张图片是英文官网pc端 首页的截图，可以清晰的看出图片占比总资源的 1.5MB/1.6MB 图片占据了大量的视觉空间，所以对于官网来说图片的优化是我们性能优化的重点   雪碧图下图中明显的一个可优">
+<meta name="twitter:image" content="http://chuantu.biz/t6/346/1532185419x-1376440240.png">
 
 
 
@@ -119,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/17/关于axios/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/21/性能优化/"/>
 
 
 
 
 
-  <title>关于axios | mandyer 的博客</title>
+  <title>性能优化 | mandyer 的博客</title>
   
 
 
@@ -242,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/17/关于axios/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/21/性能优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mandy">
@@ -259,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于axios</h1>
+          <h1 class="post-title" itemprop="name headline">性能优化</h1>
         
 
         <div class="post-meta">
@@ -271,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T18:25:09+08:00">
-                2018-05-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-21T22:55:30+08:00">
+                2018-07-21
               </time>
             
 
@@ -294,8 +303,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
                   </a>
                 </span>
 
@@ -312,9 +321,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/17/关于axios/#comments" itemprop="discussionUrl">
+                <a href="/2018/07/21/性能优化/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/17/关于axios/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/07/21/性能优化/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -342,20 +351,18 @@
       
 
       
-        <p>背景说明：<br>1.项目开发中有些情况是需要我们对项目中所有 发出的请求或返回做统一处理的。<br>例如返回错误码xxx时候需要 需要我们跳转到登录页面，项目的的所有接口都做了登录校验，那这个时候我们需要一个地方来进行统一处理。<br>2.有些接口的调用 需要依赖于其他几个接口返回的数据 </p>
-<p>一、axios 中的 Interceptors（拦截器）；</p>
-<p><a href="https://www.npmjs.com/package/axios" target="_blank" rel="external">官网地址</a></p>
-<p><em>You can intercept requests or responses before they are handled by then or catch.</em> </p>
-<p>我们可以在then 和 catch 处理之前 拦截requests、responses </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// Add a request interceptor</div><div class="line">axios.interceptors.request.use(function (config) &#123;</div><div class="line">    // Do something before request is sent</div><div class="line">    return config;</div><div class="line">  &#125;, function (error) &#123;</div><div class="line">    // Do something with request error</div><div class="line">    return Promise.reject(error);</div><div class="line">  &#125;);</div><div class="line"> </div><div class="line">// Add a response interceptor</div><div class="line">axios.interceptors.response.use(function (response) &#123;</div><div class="line">    // Do something with response data</div><div class="line">    return response;</div><div class="line">  &#125;, function (error) &#123;</div><div class="line">    // Do something with response error</div><div class="line">    return Promise.reject(error);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
-<p>If you may need to remove an interceptor later you can.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var myInterceptor = axios.interceptors.request.use(function () &#123;/*...*/&#125;);</div><div class="line">axios.interceptors.request.eject(myInterceptor);</div></pre></td></tr></table></figure></p>
-<p>You can add interceptors to a custom instance of axios.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var instance = axios.create();</div><div class="line">instance.interceptors.request.use(function () &#123;/*...*/&#125;);</div></pre></td></tr></table></figure></p>
-<p>我的做法创建一个 interceptors.js文件 在该文件中引入 axios，写上拦截相关代码，其他文件中以</p>
-<p>import axios from ‘./intercept’;方式引入 axios</p>
-<p>二、执行多个并发请求，后执行其他代码</p>
-<p> 一次性并发多个请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function getUserAccount() &#123;</div><div class="line">  return axios.get(&apos;/user/12345&apos;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">function getUserPermissions() &#123;</div><div class="line">  return axios.get(&apos;/user/12345/permissions&apos;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">axios.all([getUserAccount(), getUserPermissions()])</div><div class="line">  .then(axios.spread(function (acct, perms) &#123;</div><div class="line">    // Both requests are now complete</div><div class="line">  &#125;));</div><div class="line">//当这两个请求都完成的时候会触发这个函数，acct和perms 两个参数分别代表返回的结果</div></pre></td></tr></table></figure>
-<p><strong>总结：读文档很重要，只有了解了文档之后才能更好地使用它</strong></p>
+        <p>背景说明：组长要求每人整理一份 性能优化方案<br>分析过程：以官网（没有业务逻辑，图片较多）和大转盘活动为例（业务逻辑代码较多）<br>性能分析工具 lighthouse &amp; PageSpeed  </p>
+<p><strong>官网</strong><br>下面三张图片是英文官网pc端 首页的截图，可以清晰的看出图片占比总资源的 1.5MB/1.6MB<br> 图片占据了大量的视觉空间，所以对于官网来说图片的优化是我们性能优化的重点<br> <img src="http://chuantu.biz/t6/346/1532185419x-1376440240.png" alt="1"><br> <img src="http://chuantu.biz/t6/346/1532185473x-1376440240.png" alt="2"><br> <img src="http://chuantu.biz/t6/346/1532185489x-1376440240.png" alt="3"><br><strong>雪碧图</strong><br>下图中明显的一个可优化的点是将小的icon做成雪碧图，合并请求<br>1.画布不要留过多的空白，选择合适的尺寸的画布 ，合理生成紧凑的雪碧图（禁止生成大图且利用率少）<br>2.雪碧图的psd 上传到项目中以便下一次迭代 中添加新icon<br>（ps:由于我们的切图是设计统一提供的，我们开发中没有养成将小icon拼成雪碧图的习惯，但是这个优化点，的确是需要我们改正的！）<br> <img src="http://chuantu.biz/t6/346/1532185669x1822611413.png" alt="4">  </p>
+<p> <strong>启用WebP</strong><br> <img src="http://chuantu.biz/t6/346/1532185764x-1376440240.png" alt="5">  </p>
+<p>在官网中有几个图片体积达到了500+KB，正常情况下 我们应该保证图片最好不超过<strong>50kb</strong><br>正常情况下 如果一张图实在太大，可以将图片分割成几个部分，最后再拼接到一起。<br>使用WebP格式优点：<br>根据谷歌的测试，无损压缩后的WebP比PNG文件体积减少了45%。即使PNG文件经过其他压缩工具压缩后，WebP仍可以减少28%的文件大小。<br>此外，与JPEG格式相比，在质量相同的情况下，WebP的体积要比JPEG小40%，而WebP在压缩方面也比JPEG格式更优越。由于WebP格式文件体积小，其在图片加载速度、存储空间占用、降低流量成本方面拥有更好表现（淘宝pc端中也使用了webp格式）<br><a href="https://caniuse.com/#search=webp" target="_blank" rel="external">支持情况</a> ，对安卓支持情况还可以，<a href="https://www.cnblogs.com/xianyulaodi/p/6004504.html" target="_blank" rel="external">检查浏览是否支持webp格式</a>如果不支持webp的情况下仍展示原图。<br>（ps：可以使用ImageMagick转换 图像功能，<a href="https://aotu.io/notes/2018/06/06/ImageMagick_intro/" target="_blank" rel="external">ImageMagick</a> 是一款创建、编辑、合成，转换图像的命令行工具，或者其他方式）     </p>
+<p><strong>其他图片相关注意事项：</strong><br>不要在html中拉伸图片<br>图片懒加载 （官网中已经使用lazyload，但是由于有几个 背景图500+kb导致 阻塞后面的加载）  </p>
+<p><strong>大转盘活动：（大转盘为vue项目，一下主要为vue项目优化相关）</strong><br><strong>1. 路由懒加载</strong> （<a href="https://router.vuejs.org/zh/guide/advanced/lazy-loading.html#%E6%8A%8A%E7%BB%84%E4%BB%B6%E6%8C%89%E7%BB%84%E5%88%86%E5%9D%97" target="_blank" rel="external">资源</a>）<br>当打包构建应用时，Javascript 包会变得非常大，影响页面加载。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件，这样就更加高效了<br> <img src="http://chuantu.biz/t6/346/1532186015x-1404755576.png" alt="6">  </p>
+<p><strong>2.分离业务代码和第三方库  （<a href="https://www.jishux.com/p/654615baccec8745" target="_blank" rel="external">使用方法</a>）</strong><br>业务代码改动更新频率大,但是第三方库是比较稳定的，不会轻易改变，可以将第三方库部分的代码利用浏览器缓存起来，<br>可以使用DllPlugin&amp;DllReferencePlugin<br>优势：只打包一次,只要库文件不变,只需要打包一次,以后再打包业务代码和库文件没关系啦,这样一来真正做到了库文件永远是那个库文件,只要库文件不变,缓存永远有效      </p>
+<p><strong>3. 合理选择多页面or单页面 (<a href="https://blog.csdn.net/xiaoyucoding/article/details/79382981" target="_blank" rel="external">参考配置</a>)</strong><br>来自mandy的反面教材：大转盘分享页面<br>背景介绍：这个页面是一个简单的h5页面 ，没有过多的业务代码。因为之前并没有考虑到<br>分享页面只是一个没有过多业务逻辑的页面，目前页面是单页面路由方式，所以页面会加载一些公共的<br>文件。如果选择多页面，或者在workflow中新建一个项目的话  这个页面加载速度会更快    </p>
+<p><strong>4.组件懒加载 （<a href="https://github.com/xunleif2e/vue-lazy-component" target="_blank" rel="external">资源1</a>）</strong><br>以大转盘首页为例，大转盘首页分为抽奖部分、邀请码及文案部分、列表部分，首屏只能展示下抽奖部分<br>我的代码基本思路 首页这个组件中 包含上面简述的3个子组件。 子组件中使用的数据 由父组件传递。<br>组件懒加载的思路和我上面描述的思路不同，组件懒加载要求各组件之间降低耦合，将相关的逻辑（比如 请求接口，依赖资源）都封装在组件内部。首屏优先加载，其余不可见模块进行懒加载 。不一定适合所有情况，具体情况具体分析  （<a href="https://juejin.im/post/59bf501ff265da06602971b9" target="_blank" rel="external">资源2</a>）   </p>
+<p> <strong>需要运维支持:</strong><br>  <strong>1.使用gzip或deflate压缩资源</strong><br>  例:下图是大转盘活动PageSpeed 分析结果，我们的文件有67%的压缩空间  </p>
+<p>   <img src="http://chuantu.biz/t6/346/1532186301x1822611251.png" alt="7"><br>  <strong>2.设置浏览器缓存</strong><br>  例：下图中PageSpeed分析结果及另外一张http强求头 cache-contro:no-cache  没有设置过期时间，没次请求都会向原服务器发起请求，不会直接使用缓存<br>   <img src="http://chuantu.biz/t6/346/1532186319x1822611251.png" alt="8">     </p>
+<p><strong>目前我们分析所依据的数据是我们个人电脑上的数据，我们的单一实验数据 ！== 生产环境数据，通过上报分析出哪里需要优化<br>统计数据——分析数据及对应的场景——选择方案</strong></p>
 
       
     </div>
@@ -373,7 +380,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/axios/" rel="tag"># axios</a>
+            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
           
         </div>
       
@@ -386,15 +393,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/07/07/正则/" rel="next" title="正则">
+                <i class="fa fa-chevron-left"></i> 正则
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/09/同时管理多个ssh-key/" rel="prev" title="同时管理多个ssh key">
-                同时管理多个ssh key <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -685,9 +692,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/05/17/关于axios/';
-          this.page.identifier = '2018/05/17/关于axios/';
-          this.page.title = '关于axios';
+          this.page.url = 'http://yoursite.com/2018/07/21/性能优化/';
+          this.page.identifier = '2018/07/21/性能优化/';
+          this.page.title = '性能优化';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
