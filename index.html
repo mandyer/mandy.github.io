@@ -345,7 +345,7 @@
       
         
           
-            <p>背景说明：组长要求每人整理一份 性能优化方案<br>分析过程：以官网（没有业务逻辑，图片较多）和大转盘活动为例（业务逻辑代码较多）<br>性能分析工具 lighthouse &amp; PageSpeed  </p>
+            <p>背景说明：组长要求每人整理一份 性能优化方案 ,先记录下。<br>分析过程：以官网（没有业务逻辑，图片较多）和大转盘活动为例（业务逻辑代码较多）<br>性能分析工具 lighthouse &amp; PageSpeed  </p>
 <p><strong>官网</strong><br>下面三张图片是英文官网pc端 首页的截图，可以清晰的看出图片占比总资源的 1.5MB/1.6MB<br> 图片占据了大量的视觉空间，所以对于官网来说图片的优化是我们性能优化的重点<br> <img src="http://chuantu.biz/t6/346/1532185419x-1376440240.png" alt="1"><br> <img src="http://chuantu.biz/t6/346/1532185473x-1376440240.png" alt="2"><br> <img src="http://chuantu.biz/t6/346/1532185489x-1376440240.png" alt="3"><br><strong>雪碧图</strong><br>下图中明显的一个可优化的点是将小的icon做成雪碧图，合并请求<br>1.画布不要留过多的空白，选择合适的尺寸的画布 ，合理生成紧凑的雪碧图（禁止生成大图且利用率少）<br>2.雪碧图的psd 上传到项目中以便下一次迭代 中添加新icon<br>（ps:由于我们的切图是设计统一提供的，我们开发中没有养成将小icon拼成雪碧图的习惯，但是这个优化点，的确是需要我们改正的！）<br> <img src="http://chuantu.biz/t6/346/1532185669x1822611413.png" alt="4">  </p>
 <p> <strong>启用WebP</strong><br> <img src="http://chuantu.biz/t6/346/1532185764x-1376440240.png" alt="5">  </p>
 <p>在官网中有几个图片体积达到了500+KB，正常情况下 我们应该保证图片最好不超过<strong>50kb</strong><br>正常情况下 如果一张图实在太大，可以将图片分割成几个部分，最后再拼接到一起。<br>使用WebP格式优点：<br>根据谷歌的测试，无损压缩后的WebP比PNG文件体积减少了45%。即使PNG文件经过其他压缩工具压缩后，WebP仍可以减少28%的文件大小。<br>此外，与JPEG格式相比，在质量相同的情况下，WebP的体积要比JPEG小40%，而WebP在压缩方面也比JPEG格式更优越。由于WebP格式文件体积小，其在图片加载速度、存储空间占用、降低流量成本方面拥有更好表现（淘宝pc端中也使用了webp格式）<br><a href="https://caniuse.com/#search=webp" target="_blank" rel="external">支持情况</a> ，对安卓支持情况还可以，<a href="https://www.cnblogs.com/xianyulaodi/p/6004504.html" target="_blank" rel="external">检查浏览是否支持webp格式</a>如果不支持webp的情况下仍展示原图。<br>（ps：可以使用ImageMagick转换 图像功能，<a href="https://aotu.io/notes/2018/06/06/ImageMagick_intro/" target="_blank" rel="external">ImageMagick</a> 是一款创建、编辑、合成，转换图像的命令行工具，或者其他方式）     </p>
