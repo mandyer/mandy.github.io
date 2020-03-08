@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="《JavaScript 高级程序设计》读书笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="if 语句1if(condition) statement1 else statement2  ECMAScript 会自动调用Boolean(),将condition位置的表达式的结果转换为布尔值  condition结果是true则执行statement1 ，为false 则执行 statement2 do-while 语句do-while语句是一种后测试循环语句，既只有在循环体中的代码执行之">
+<meta name="keywords" content="《JavaScript 高级程序设计》读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.6语句">
+<meta property="og:url" content="http://yoursite.com/2020/03/08/3-6语句/index.html">
+<meta property="og:site_name" content="mandyer 的博客">
+<meta property="og:description" content="if 语句1if(condition) statement1 else statement2  ECMAScript 会自动调用Boolean(),将condition位置的表达式的结果转换为布尔值  condition结果是true则执行statement1 ，为false 则执行 statement2 do-while 语句do-while语句是一种后测试循环语句，既只有在循环体中的代码执行之">
+<meta property="og:updated_time" content="2020-03-08T09:05:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3.6语句">
+<meta name="twitter:description" content="if 语句1if(condition) statement1 else statement2  ECMAScript 会自动调用Boolean(),将condition位置的表达式的结果转换为布尔值  condition结果是true则执行statement1 ，为false 则执行 statement2 do-while 语句do-while语句是一种后测试循环语句，既只有在循环体中的代码执行之">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/08/3-6语句/"/>
+
+
+
+
+
+  <title>3.6语句 | mandyer 的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mandyer 的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/08/3-6语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mandy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/17597513?s=60&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mandyer 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">3.6语句</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-08T15:39:53+08:00">
+                2020-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/08/3-6语句/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/03/08/3-6语句/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(condition) statement1 <span class="keyword">else</span> statement2</div></pre></td></tr></table></figure>
+<blockquote>
+<p>ECMAScript 会自动调用Boolean(),将condition位置的表达式的结果转换为布尔值</p>
+</blockquote>
+<p>condition结果是true则执行statement1 ，为false 则执行 statement2</p>
+<h4 id="do-while-语句"><a href="#do-while-语句" class="headerlink" title="do-while 语句"></a>do-while 语句</h4><p>do-while语句是一种<em>后测试循环语句</em>，既只有在循环体中的代码执行之后，才会对条件表达式求值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span>&#123;</div><div class="line">    statement</div><div class="line">&#125; <span class="keyword">while</span>(expression)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>像do-while 这种后测试循环语句，最常用语循环体中的代码至少被执行一次的情形</p>
+</blockquote>
+<h4 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h4><p>while 语句属于<em>前测试循环语句</em>，既在循环体内代码执行之前，就会对条件表达式求值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(expression)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h4><div class="note warning"><p>for语句也是一种前测试循环语句，但它具有在循环之前初始化变量和定义循环后要执行的代码的能力</p></div>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(initialization;expression;post-loop-expression) statement</div></pre></td></tr></table></figure>
+<p>例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count=<span class="number">10</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;count;i++)&#123;</div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以上代码定义了变量 i的初始值为0，只有当条件表达式 （i&lt;count）返回true的情况下才会进入for循环，<em>如果执行了循环体中的代码，则一定会对循环后的表达式（i++）求值</em></p>
+<p>上面for循环语句的代码，可以使用while 语句实现相同的功能</p>
+<p>例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count=<span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>(i&lt;count)&#123;</div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">    i++;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>for语句中的初始化表达式、控制表达式、循环后表达式 都可选</strong></p>
+<p>例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//无限循环</span></div><div class="line"><span class="keyword">for</span>(;;)&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="comment">//等同于 while循环</span></div><div class="line"><span class="keyword">var</span> count =<span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line"><span class="keyword">for</span>(;i&lt;count;)&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">    i++;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="for-in语句"><a href="#for-in语句" class="headerlink" title="for-in语句"></a>for-in语句</h4><p>for-in语句是一种精准的迭代语句，可以用来枚举对象的属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(property <span class="keyword">in</span> expression) statement</div></pre></td></tr></table></figure>
+<p>例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> propName <span class="keyword">in</span> <span class="built_in">window</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(propName)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用for-in 循环显示window 对象的所有属性，每次执行循环时，都会将window 对象中存在的一个属性名赋值给propName。这个过程会一直持续到对象中的所有属性都被枚举一遍为止。</p>
+<p>ECMAScript对象的属性没有顺序，因此通过for-in 循环输出的属性名的顺序是不可预测的，所有的属性 都会被返回一次，但是返回的先后次序可能会因浏览器而异</p>
+<p>如果需要迭代的对象为null 或 undefined ，ECMAScript 5 + 将不执行循环体(ECMAScript 5 -会报错)，<em>建议在使用 for-in 循环之前，先检查 确认对象的值 不是null或undefined</em>。</p>
+<blockquote>
+<p>safari3以前的版本 for-in 语句中存在一个bug,该bug导致某些属性被返回两次</p>
+</blockquote>
+<h4 id="label-语句"><a href="#label-语句" class="headerlink" title="label 语句"></a>label 语句</h4><p>使用label语句可以在代码中添加标签，以便将来使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">label:statement</div></pre></td></tr></table></figure>
+<p>例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">start:<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>加标签的语句一般都要与for语句等循环语句配合使用。</p>
+<h4 id="break-和-continue-语句"><a href="#break-和-continue-语句" class="headerlink" title="break 和 continue 语句"></a>break 和 continue 语句</h4><p>break 和 continue 语句用于在循环语句中精准地控制代码的执行<br>break语句 会立即退出循环，强制继续执行循环后面的语句<br>continue语句 也是立即退出循环，但退出循环后会从循环的顶部继续执行</p>
+<p>例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num=<span class="number">0</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">    <span class="keyword">if</span>(i%<span class="number">5</span> == <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    num++</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(i); <span class="comment">//10</span></div><div class="line"><span class="built_in">console</span>.log(num); <span class="comment">//4</span></div></pre></td></tr></table></figure>
+<p>break 语句的执行，导致循环在num再次递增之前就退出了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num=<span class="number">0</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">    <span class="keyword">if</span>(i%<span class="number">5</span> == <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    num++</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(num);<span class="comment">//8</span></div><div class="line"><span class="built_in">console</span>.log(i);<span class="comment">//10</span></div></pre></td></tr></table></figure>
+<p><em>当i等于5时，循环会在num再次递增之前退出，但接下来执行的是下一次的循环，既i的值等于6的循环</em>，i等于10时自然结束</p>
+<p><strong>break和continue语句联合label使用</strong></p>
+<p>这种联合使用的情况多发生在循环嵌套的情况下</p>
+<p>例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num=<span class="number">0</span>;</div><div class="line">outermost:<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;<span class="number">10</span>;j++)&#123;</div><div class="line">        <span class="keyword">if</span>(i==<span class="number">5</span> &amp; j==<span class="number">5</span>)&#123;</div><div class="line">            <span class="keyword">break</span> outermost</div><div class="line">        &#125;</div><div class="line">        num++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(num);<span class="comment">//55</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num=<span class="number">0</span>;</div><div class="line">outermost:<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;<span class="number">10</span>;j++)&#123;</div><div class="line">        <span class="keyword">if</span>(i==<span class="number">5</span> &amp; j==<span class="number">5</span>)&#123;</div><div class="line">            <span class="keyword">continue</span> outermost</div><div class="line">        &#125;</div><div class="line">        num++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(num);<span class="comment">//95</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>建议：如果使用label语句，一定要使用描述性的标签，同时不要嵌套过多循环</p>
+</blockquote>
+<h4 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h4><p>with 语句的作用是将代码的作用域设置到一个特点的对象中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span>(expression) statement</div></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> qs=location.search.substring(<span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> hostName=location.hostname;</div><div class="line"><span class="keyword">var</span> url=location.href;</div><div class="line"></div><div class="line"><span class="comment">//使用 with 语句改写上述代码</span></div><div class="line"></div><div class="line"><span class="keyword">with</span>(location)&#123;</div><div class="line">    <span class="keyword">var</span> qs=search.substring(<span class="number">1</span>);</div><div class="line">    <span class="keyword">var</span> hostName=hostname;</div><div class="line">    <span class="keyword">var</span> url=href;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用with语句关联了location对象，意味着在with语句的代码块内部，每个变量被认为是一个局部变量</p>
+<blockquote>
+<p>大量使用with 语句会导致性能下降，同时也会给调试代码造成困难，在开发大型应用程序时，不建议使用</p>
+</blockquote>
+<h4 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(expression)&#123;</div><div class="line">    <span class="keyword">case</span> value:statement</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> value:statement</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> value:statement</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:statement</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>break 关键字会导致代码执行跳出switch语句，如果省略break会导致执行完当前case后，继续执行下一个case，最后的default 关键字则用于在表达式不匹配前面任何一种case的时候执行</p>
+<blockquote>
+<p>switch 语句在比较值的时使用的是全等操作符</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/《JavaScript-高级程序设计》读书笔记/" rel="tag"># 《JavaScript 高级程序设计》读书笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/08/3-7函数/" rel="next" title="3.7函数">
+                <i class="fa fa-chevron-left"></i> 3.7函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/08/3-5操作符/" rel="prev" title="3.5操作符">
+                3.5操作符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars0.githubusercontent.com/u/17597513?s=60&v=4"
+                alt="mandy" />
+            
+              <p class="site-author-name" itemprop="name">mandy</p>
+              <p class="site-description motion-element" itemprop="description">积累积累日积月累</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#if-语句"><span class="nav-number">1.</span> <span class="nav-text">if 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#do-while-语句"><span class="nav-number">2.</span> <span class="nav-text">do-while 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while-语句"><span class="nav-number">3.</span> <span class="nav-text">while 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-语句"><span class="nav-number">4.</span> <span class="nav-text">for 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-in语句"><span class="nav-number">5.</span> <span class="nav-text">for-in语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#label-语句"><span class="nav-number">6.</span> <span class="nav-text">label 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#break-和-continue-语句"><span class="nav-number">7.</span> <span class="nav-text">break 和 continue 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#with-语句"><span class="nav-number">8.</span> <span class="nav-text">with 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#switch-语句"><span class="nav-number">9.</span> <span class="nav-text">switch 语句</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mandy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/03/08/3-6语句/';
+          this.page.identifier = '2020/03/08/3-6语句/';
+          this.page.title = '3.6语句';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
